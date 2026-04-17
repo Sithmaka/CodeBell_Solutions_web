@@ -113,8 +113,8 @@ export default function About() {
           content="CodeBell is an engineering agency dedicated to crafting high-performance, immovable technical foundations."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.codebellsolutions.com/about" />
-        <link rel="canonical" href="https://www.codebellsolutions.com/about" />
+        <meta property="og:url" content="https://www.codebell.online/about" />
+        <link rel="canonical" href="https://www.codebell.online/about" />
       </Helmet>
 
       <Navbar />

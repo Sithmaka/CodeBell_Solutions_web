@@ -99,8 +99,8 @@ export default function Home() {
           content="We build authoritative digital solutions."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.codebellsolutions.com/" />
-        <link rel="canonical" href="https://www.codebellsolutions.com/" />
+        <meta property="og:url" content="https://www.codebell.online/" />
+        <link rel="canonical" href="https://www.codebell.online/" />
       </Helmet>
 
       <Navbar />

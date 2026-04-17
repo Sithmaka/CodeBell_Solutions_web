@@ -55,8 +55,8 @@ Message: ${message}`;
           content="Reach out to discuss your next monolithic transformation."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.codebellsolutions.com/contact" />
-        <link rel="canonical" href="https://www.codebellsolutions.com/contact" />
+        <meta property="og:url" content="https://www.codebell.online/contact" />
+        <link rel="canonical" href="https://www.codebell.online/contact" />
       </Helmet>
 
       <Navbar />
@@ -142,7 +142,7 @@ Message: ${message}`;
                       <Mail size={18} />
                       <div>
                         <span>EMAIL</span>
-                        <p>info@codebellsolutions.com</p>
+                        <p>info@codebell.online</p>
                       </div>
                     </div>
 

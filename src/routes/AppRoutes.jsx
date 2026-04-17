@@ -5,6 +5,8 @@ import Services from "../pages/Services";
 import Contact from "../pages/Contact";
 import ScrollTop from "../components/common/ScrollTop";
 import FAQs from "../pages/FAQs";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import Terms from "../pages/Terms";
 
 export default function AppRoutes() {
   return (
@@ -16,6 +18,8 @@ export default function AppRoutes() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faqs" element={<FAQs />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
     </BrowserRouter>
   );

@@ -40,7 +40,7 @@ export default function Footer() {
                 <Link to="/privacy-policy">Privacy Policy</Link>
               </li>
               <li>
-                <Link to="/terms-of-service">Terms of Service</Link>
+                <Link to="/terms">Terms of Service</Link>
               </li>
             </ul>
           </div>
@@ -50,7 +50,7 @@ export default function Footer() {
             <ul>
               <li>
                 <a
-                  href="https://www.linkedin.com/"
+                  href="https://www.linkedin.com/company/codebelllk"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -59,7 +59,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/CodeBell-Solutions"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -100,8 +100,8 @@ export default function Services() {
           content="Our specialized tech solutions for modern enterprises."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.codebellsolutions.com/services" />
-        <link rel="canonical" href="https://www.codebellsolutions.com/services" />
+        <meta property="og:url" content="https://www.codebell.online/services" />
+        <link rel="canonical" href="https://www.codebell.online/services" />
       </Helmet>
 
       <Navbar />
