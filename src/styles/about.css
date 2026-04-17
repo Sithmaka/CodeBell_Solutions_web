@@ -1,0 +1,489 @@
+.cb-about-page {
+  background: #f6f6f6;
+  color: #161616;
+}
+
+.cb-about-container {
+  width: min(1320px, calc(100% - 56px));
+  margin: 0 auto;
+}
+
+/* HERO */
+.cb-about-hero {
+  padding: 64px 0 28px;
+}
+
+.cb-about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.cb-about-hero-left h1 {
+  font-size: clamp(3.8rem, 7vw, 6.4rem);
+  line-height: 0.92;
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  color: #10131d;
+}
+
+.cb-about-hero-left h1 span {
+  display: inline-block;
+  background: linear-gradient(90deg, #5526ff 0%, #d8c8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.cb-about-hero-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cb-about-hero-right p {
+  max-width: 430px;
+  font-size: 1.12rem;
+  line-height: 1.9;
+  font-weight: 500;
+  color: #6f7078;
+  margin: 0;
+}
+
+/* STATS */
+.cb-about-stats-section {
+  padding: 8px 0 24px;
+}
+
+.cb-about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+.cb-about-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cb-about-stat-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cb-about-stat-icon {
+  color: #5526ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cb-about-stat-top h3 {
+  font-size: clamp(2.25rem, 4vw, 3.15rem);
+  line-height: 1;
+  font-weight: 800;
+  color: #202127;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+
+.cb-about-stat-card p {
+  margin: 0 0 0 56px;
+  max-width: 330px;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #5f6068;
+  font-weight: 400;
+}
+
+.cb-about-stat-card p strong {
+  color: #2c2d33;
+  font-weight: 700;
+}
+
+/* OVERVIEW */
+.cb-overview-section {
+  padding: 12px 0 56px;
+}
+
+.cb-overview-grid {
+  display: block; /* remove grid completely */
+}
+
+/* REMOVE SIDE LABEL LOOK */
+.cb-overview-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #8a6cff;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* FULL WIDTH CONTENT */
+.cb-overview-content {
+  width: 100%;
+  max-width: 100%; /* remove limitation */
+}
+
+.cb-overview-content h2,
+.cb-section-title-center h2,
+.cb-advantage-intro h2 {
+  font-size: clamp(2.6rem, 4vw, 4.2rem);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: #1a1d28;
+  margin-bottom: 18px;
+}
+
+.cb-overview-content p {
+  width: 100%;
+  max-width: 100%; /* full width paragraph */
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #7d7e87;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+/* TAGS */
+.cb-about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.cb-about-tags span {
+  padding: 8px 14px;
+  background: #f0f0f0;
+  border: 1px solid #e7e7e7;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #878891;
+}
+
+/* MISSION / VISION */
+.cb-mission-vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #f5f5f5 0%, #f3efff 100%);
+}
+
+.cb-mv-card {
+  padding: 30px 28px;
+}
+
+/* ICONS */
+.cb-mv-icon,
+.cb-principle-icon,
+.cb-advantage-icon {
+  color: #7a58ff;
+  margin-bottom: 14px;
+  display: inline-flex;
+}
+
+/* TEXT */
+.cb-mv-card h3,
+.cb-principle-card h3,
+.cb-advantage-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cb-mv-card p,
+.cb-principle-card p,
+.cb-advantage-card p {
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+/* PRINCIPLES */
+.cb-principles-section {
+  padding: 10px 0 56px;
+}
+
+.cb-section-title-center {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.cb-principles-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.cb-principle-card {
+  background: #efefef;
+  padding: 28px 26px 24px;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+.cb-principle-card.large .cb-principle-icon {
+  color: #d2c2ff;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  margin-bottom: 0;
+}
+
+.cb-principle-card:not(.large):not(.image-card) .cb-principle-icon {
+  color: #d2c2ff;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  margin-bottom: 0;
+}
+
+.cb-principle-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.cb-principle-card p {
+  max-width: 92%;
+  position: relative;
+  z-index: 1;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.cb-principles-grid .cb-principle-card:nth-child(3) {
+  grid-column: 1 / 2;
+}
+
+.cb-principles-grid .cb-principle-card:nth-child(4) {
+  grid-column: 2 / 3;
+}
+
+.cb-principle-card.image-card {
+  min-height: 170px;
+  background:
+    linear-gradient(rgba(240, 240, 240, 0.76), rgba(240, 240, 240, 0.76)),
+    url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80")
+      center/cover no-repeat;
+}
+
+/* ADVANTAGE */
+.cb-advantage-section {
+  padding: 4px 0 64px;
+}
+
+.cb-advantage-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 28px 0 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.cb-advantage-intro {
+  padding: 8px 8px 8px 0;
+}
+
+.cb-advantage-intro h2 {
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+.cb-advantage-intro p {
+  max-width: 260px;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: #7b7c85;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.cb-case-link {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #6a45ff;
+  letter-spacing: 0.03em;
+  border-bottom: 2px solid #6a45ff;
+  padding-bottom: 2px;
+}
+
+.cb-advantage-card {
+  background: #f0f0f0;
+  padding: 24px 22px;
+  min-height: 180px;
+}
+
+.cb-advantage-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.cb-advantage-card p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .cb-about-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .cb-about-hero-right {
+    justify-content: flex-start;
+  }
+
+  .cb-about-hero-right p {
+    max-width: 720px;
+  }
+
+  .cb-about-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+  }
+
+  .cb-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cb-advantage-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cb-about-container {
+    width: min(100% - 24px, 1320px);
+  }
+
+  .cb-about-hero {
+    padding: 48px 0 20px;
+  }
+
+  .cb-about-hero-left h1 {
+    font-size: 2.8rem;
+  }
+
+  .cb-about-hero-right p {
+    font-size: 1rem;
+    line-height: 1.9;
+  }
+
+  .cb-about-stats-section {
+    padding: 6px 0 18px;
+  }
+
+  .cb-about-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .cb-about-stat-top {
+    gap: 12px;
+  }
+
+  .cb-about-stat-top h3 {
+    font-size: 2.2rem;
+  }
+
+  .cb-about-stat-card p {
+    margin-left: 54px;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    max-width: 100%;
+  }
+
+  .cb-overview-section,
+  .cb-principles-section,
+  .cb-advantage-section {
+    padding-top: 20px;
+    padding-bottom: 46px;
+  }
+
+  .cb-overview-content h2,
+  .cb-section-title-center h2,
+  .cb-advantage-intro h2 {
+    font-size: 2.1rem;
+  }
+
+  .cb-overview-content p {
+    font-size: 0.98rem;
+    margin-bottom: 20px;
+  }
+
+  .cb-mission-vision-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cb-mv-card {
+    padding: 24px 20px;
+  }
+
+  .cb-mv-card h3,
+  .cb-principle-card h3,
+  .cb-advantage-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .cb-principles-grid,
+  .cb-advantage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cb-principles-grid .cb-principle-card:nth-child(3),
+  .cb-principles-grid .cb-principle-card:nth-child(4) {
+    grid-column: auto;
+  }
+
+  .cb-principle-card,
+  .cb-principle-card.image-card {
+    min-height: auto;
+  }
+
+  .cb-principle-card.large .cb-principle-icon,
+  .cb-principle-card:not(.large):not(.image-card) .cb-principle-icon {
+    position: static;
+    margin-bottom: 14px;
+  }
+
+  .cb-principle-card p {
+    max-width: 100%;
+  }
+
+  .cb-advantage-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .cb-about-tags {
+    gap: 8px;
+  }
+
+  .cb-about-tags span {
+    font-size: 0.78rem;
+    padding: 8px 14px;
+  }
+
+  .cb-about-stat-card p {
+    margin-left: 0;
+  }
+}
