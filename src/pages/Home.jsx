@@ -113,7 +113,7 @@ export default function Home() {
                 <h1>
                 Empowering your businesses with
                 <br />
-                transformative digital solutions.
+                transformative <span>digital solutions.</span>
                 </h1>
 
                 <p>

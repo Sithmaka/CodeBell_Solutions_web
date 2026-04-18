@@ -113,7 +113,7 @@ export default function Services() {
               <h1>
                 Our Specialized Tech
                 <br />
-                Solutions
+                <span>Solutions</span>
               </h1>
 
               <p>

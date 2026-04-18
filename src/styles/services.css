@@ -27,6 +27,14 @@
   margin-bottom: 30px;
 }
 
+.cb-services-hero-content h1 span {
+  background: linear-gradient(90deg, #5526ff 0%, #d8c8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
 .cb-services-hero-content p {
   max-width: 760px;
   font-size: 1.3rem;

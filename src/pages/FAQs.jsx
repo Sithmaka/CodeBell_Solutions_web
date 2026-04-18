@@ -52,7 +52,7 @@ export default function FAQs() {
         <section className="cb-faq-section">
           <div className="cb-container">
             <div className="cb-faq-header">
-              <h1>Frequently Asked Questions</h1>
+              <h1><span>F</span>requently <span>A</span>sked <span>Q</span>uestions</h1>
             </div>
 
             <div className="cb-faq-list">
