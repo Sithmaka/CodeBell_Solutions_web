@@ -53,6 +53,15 @@ export default function Navbar() {
             </NavLink>
 
             <NavLink
+              to="/portfolio"
+              className={({ isActive }) =>
+                isActive ? "cb-nav-link active" : "cb-nav-link"
+              }
+            >
+              Portfolio
+            </NavLink>
+
+            <NavLink
               to="/faqs"
               className={({ isActive }) =>
                 isActive ? "cb-nav-link active" : "cb-nav-link"
@@ -133,6 +142,16 @@ export default function Navbar() {
             onClick={closeMenu}
           >
             Services
+          </NavLink>
+
+          <NavLink
+            to="/portfolio"
+            className={({ isActive }) =>
+              isActive ? "cb-mobile-link active" : "cb-mobile-link"
+            }
+            onClick={closeMenu}
+          >
+            Portfolio
           </NavLink>
 
           <NavLink
