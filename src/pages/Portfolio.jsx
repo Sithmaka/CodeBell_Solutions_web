@@ -14,7 +14,7 @@ const projects = [
   {
     title: "CodeBell Business Systems",
     category: "Business Platform",
-    url: "https://code-bell-business-systems.vercel.app/",
+    url: "https://codebell.biz/",
   },
   {
     title: "Photographer Portfolio",
