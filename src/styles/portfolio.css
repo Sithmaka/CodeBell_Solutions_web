@@ -130,7 +130,7 @@
 }
 
 .cb-browser-bar {
-  height: 38px;
+  height: 34px;
   display: grid;
   grid-template-columns: 70px minmax(0, 1fr) 70px;
   align-items: center;
@@ -185,7 +185,7 @@
 
 .cb-project-viewport {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: linear-gradient(135deg, #ececf2, #dedee7);
 }
@@ -193,11 +193,11 @@
 .cb-project-viewport iframe {
   position: absolute;
   inset: 0;
-  width: 160%;
-  height: 160%;
+  width: 300%;
+  height: 300%;
   border: 0;
   pointer-events: none;
-  transform: scale(0.625);
+  transform: scale(0.333333);
   transform-origin: top left;
 }
 
@@ -240,12 +240,12 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  padding: 22px 3px 0;
+  padding: 17px 3px 0;
 }
 
 .cb-project-number {
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: 9px;
   color: #a1a1a8;
   font-size: 0.7rem;
   font-weight: 700;
@@ -273,7 +273,7 @@
   height: 46px;
   display: grid;
   place-items: center;
-  margin-top: 25px;
+  margin-top: 18px;
   color: #5b2cff;
   border: 1px solid #d7d4e3;
   border-radius: 50%;

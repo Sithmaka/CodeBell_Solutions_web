@@ -7,29 +7,9 @@ import "../styles/portfolio.css";
 
 const projects = [
   {
-    title: "Gem Sample",
-    category: "Jewellery Website",
-    url: "https://gem-sample-web.vercel.app/",
-  },
-  {
-    title: "Gem Website",
-    category: "Jewellery Website",
-    url: "https://gem-website-eight.vercel.app/",
-  },
-  {
-    title: "Villa Website",
-    category: "Hospitality Website",
-    url: "https://villa-website-gules.vercel.app/",
-  },
-  {
     title: "Kanvisor",
     category: "Business Website",
     url: "https://kanvisor-website.vercel.app/",
-  },
-  {
-    title: "Aurelia Gems",
-    category: "Jewellery Website",
-    url: "https://aurelia-gems.vercel.app/",
   },
   {
     title: "CodeBell Business Systems",
@@ -70,6 +50,26 @@ const projects = [
     title: "RBM",
     category: "Corporate Website",
     url: "https://rbm-website-khaki.vercel.app/",
+  },
+  {
+    title: "Aurelia Gems",
+    category: "Jewellery Website",
+    url: "https://aurelia-gems.vercel.app/",
+  },
+  {
+    title: "Gem Sample",
+    category: "Jewellery Website",
+    url: "https://gem-sample-web.vercel.app/",
+  },
+  {
+    title: "Gem Website",
+    category: "Jewellery Website",
+    url: "https://gem-website-eight.vercel.app/",
+  },
+  {
+    title: "Villa Website",
+    category: "Hospitality Website",
+    url: "https://villa-website-gules.vercel.app/",
   },
   {
     title: "ServeSync",
