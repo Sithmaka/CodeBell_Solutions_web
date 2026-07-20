@@ -79,7 +79,7 @@ const projects = [
   {
     title: "Nexora Labs",
     category: "Technology Website",
-    url: "https://nexoralabs-web.vercel.app/",
+    url: "https://www.nexoralabs.site/",
   },
   {
     title: "Rigor",
