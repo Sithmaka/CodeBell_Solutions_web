@@ -22,6 +22,7 @@ export default function AppRoutes() {
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/terms-and-conditions" element={<Terms />} />
       </Routes>
     </BrowserRouter>
   );
