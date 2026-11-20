@@ -1,0 +1,338 @@
+/* Structural redesign: spacious presentation-led layouts over the shared dark theme. */
+.cb-theme :is(.cb-container,.cb-about-container,.cb-services-container,.cb-portfolio-container,.cb-contact-container,.cb-faq-container,.cb-legal-shell,.cb-footer-container) {
+  width:min(1180px,calc(100% - 48px));
+  margin-inline:auto;
+}
+
+.cb-theme .cb-layout-eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  width:fit-content;
+  margin:0 0 22px;
+  padding:7px 11px;
+  color:#c8b6ff;
+  background:rgba(123,70,255,.1);
+  border:1px solid rgba(155,116,255,.24);
+  border-radius:999px;
+  font-size:.7rem;
+  font-weight:800;
+  line-height:1;
+  letter-spacing:.15em;
+}
+
+.cb-theme .cb-layout-eyebrow::before {
+  width:6px;
+  height:6px;
+  content:"";
+  background:#9b74ff;
+  border-radius:50%;
+  box-shadow:0 0 12px #8657ff;
+}
+
+.cb-theme .cb-card-index {
+  position:absolute;
+  top:24px;
+  right:26px;
+  color:#77717f;
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+
+/* Home: centered message and a product-like visual stage. */
+.cb-theme .cb-hero {
+  position:relative;
+  min-height:calc(100svh - 79px);
+  padding:88px 0 0;
+}
+
+.cb-theme .cb-hero > .cb-container { position:relative; z-index:2; }
+
+.cb-theme .cb-particle-network {
+  position:absolute;
+  z-index:0;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:1;
+  pointer-events:auto;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.08),#000 22%,#000 82%,transparent 100%);
+}
+
+.cb-theme .cb-hero::after {
+  position:absolute;
+  z-index:1;
+  inset:0;
+  pointer-events:none;
+  content:"";
+  background:
+    radial-gradient(ellipse at center 41%,rgba(5,5,6,.78) 0 16%,rgba(5,5,6,.48) 38%,transparent 70%),
+    linear-gradient(180deg,rgba(5,5,6,.2),transparent 42%,rgba(5,5,6,.16));
+}
+
+.cb-theme .cb-hero-layout {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:calc(100svh - 168px);
+  padding:50px 0 120px;
+  gap:14px;
+}
+
+.cb-theme .cb-hero-content {
+  position:relative;
+  z-index:2;
+  max-width:920px;
+  padding:0;
+  text-align:center;
+}
+
+.cb-theme .cb-hero-content .cb-layout-eyebrow { margin-inline:auto; }
+
+.cb-theme .cb-hero h1 {
+  max-width:900px;
+  margin:0 auto 28px;
+  font-size:clamp(3.6rem,7vw,6.8rem);
+  line-height:.92;
+  letter-spacing:-.07em;
+}
+
+.cb-theme .cb-hero h1 br { display:none; }
+.cb-theme .cb-hero p:not(.cb-layout-eyebrow) { max-width:720px; margin:0 auto 32px; font-size:1.1rem; line-height:1.75; }
+.cb-theme .cb-hero-actions { justify-content:center; }
+
+.cb-theme .cb-hero-capabilities {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px 26px;
+  margin-top:28px;
+  color:#85808d;
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.cb-theme .cb-hero-capabilities span { position:relative; }
+.cb-theme .cb-hero-capabilities span + span::before { position:absolute; left:-15px; color:#4f4957; content:"/"; }
+
+.cb-theme .cb-clients-strip { padding:20px 0; border-block:1px solid var(--cb-border); }
+.cb-theme .cb-client-logo-card { min-width:150px; height:76px; padding:12px 18px; }
+.cb-theme .cb-client-logo { max-width:118px; max-height:50px; }
+
+.cb-theme :is(.cb-services-section,.cb-process-section,.cb-cta-section) { padding:120px 0; }
+.cb-theme .cb-section-header { display:grid; grid-template-columns:1fr minmax(280px,420px); align-items:end; gap:50px; margin-bottom:54px; }
+.cb-theme .cb-section-header .cb-layout-eyebrow { margin-bottom:18px; }
+.cb-theme .cb-section-header h2,
+.cb-theme .cb-process-header h2 { font-size:clamp(2.7rem,5vw,4.8rem); line-height:.96; }
+.cb-theme .cb-section-header > p { margin:0 0 4px; line-height:1.75; }
+
+.cb-theme .cb-services-grid { grid-template-columns:repeat(12,minmax(0,1fr)); gap:18px; }
+.cb-theme .cb-service-card { position:relative; grid-column:span 4; min-height:320px; padding:34px; justify-content:flex-end; overflow:hidden; }
+.cb-theme .cb-service-card.wide { grid-column:span 8; }
+.cb-theme .cb-service-card:nth-child(5) { grid-column:span 4; }
+.cb-theme .cb-service-card::after { position:absolute; top:-70px; right:-70px; width:180px; height:180px; content:""; border:1px solid rgba(155,116,255,.13); border-radius:50%; box-shadow:0 0 0 35px rgba(155,116,255,.025),0 0 0 70px rgba(155,116,255,.018); }
+.cb-theme .cb-service-card .cb-service-icon { margin:0 0 auto; }
+.cb-theme .cb-service-card h3 { max-width:390px; font-size:clamp(1.55rem,2.4vw,2.2rem); }
+.cb-theme .cb-service-card p { max-width:540px; margin:0; font-size:.98rem; }
+
+.cb-theme .cb-process-header { margin-bottom:58px; text-align:center; }
+.cb-theme .cb-process-header .cb-layout-eyebrow { margin-inline:auto; }
+.cb-theme .cb-process-grid { position:relative; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; }
+.cb-theme .cb-process-grid::before { position:absolute; top:47px; right:8%; left:8%; height:1px; content:""; background:linear-gradient(90deg,transparent,#6134c8 15% 85%,transparent); }
+.cb-theme .cb-process-item { min-height:260px; padding:76px 24px 24px; text-align:center; }
+.cb-theme .cb-process-number { top:26px; left:50%; z-index:2; display:grid; width:42px; height:42px; place-items:center; color:#d9ceff; background:#140e21; border:1px solid rgba(155,116,255,.34); border-radius:50%; font-size:.72rem; letter-spacing:.08em; transform:translateX(-50%); }
+.cb-theme .cb-process-item p { max-width:none; }
+
+.cb-theme .cb-cta-box { display:flex; align-items:center; justify-content:space-between; gap:42px; min-height:310px; padding:52px 62px; text-align:left; border-radius:24px; }
+.cb-theme .cb-cta-box h2 { margin:0; }
+.cb-theme .cb-cta-box .cb-primary-btn { flex:none; }
+
+/* Shared secondary hero composition. */
+.cb-theme :is(.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero) { padding:110px 0 100px; }
+.cb-theme :is(.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero,.cb-legal-hero)::after {
+  position:absolute;
+  right:-10%;
+  bottom:-65%;
+  width:min(720px,70vw);
+  aspect-ratio:1;
+  pointer-events:none;
+  content:"";
+  opacity:.32;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(147,102,255,.6) 0 1px,transparent 2px) 0 0 / 17px 17px,
+    radial-gradient(circle,rgba(107,54,255,.18),transparent 64%);
+  border-radius:50%;
+  filter:blur(.1px);
+  animation:cbAmbientOrbit 24s linear infinite;
+  mask-image:radial-gradient(circle,#000,transparent 68%);
+}
+
+@keyframes cbAmbientOrbit {
+  from { rotate:0deg; scale:.94; }
+  50% { scale:1.04; }
+  to { rotate:360deg; scale:.94; }
+}
+.cb-theme :is(.cb-services-hero-content,.cb-contact-hero-content) { max-width:920px; margin-inline:auto; text-align:center; }
+.cb-theme :is(.cb-services-hero-content,.cb-contact-hero-content) .cb-layout-eyebrow { margin-inline:auto; }
+.cb-theme :is(.cb-services-hero-content,.cb-contact-hero-content) h1 { font-size:clamp(3.4rem,7vw,6.5rem); line-height:.94; }
+.cb-theme :is(.cb-services-hero-content,.cb-contact-hero-content) > p:not(.cb-layout-eyebrow) { max-width:720px; margin:26px auto 0; font-size:1.05rem; line-height:1.8; }
+
+/* About: editorial intro followed by bento modules. */
+.cb-theme .cb-about-hero-grid { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(280px,.6fr); gap:80px; align-items:end; }
+.cb-theme .cb-about-hero-left .cb-layout-eyebrow { margin-bottom:26px; }
+.cb-theme .cb-about-hero-left h1 { font-size:clamp(3.6rem,6.8vw,6.3rem); }
+.cb-theme .cb-about-hero-right { padding:0 0 10px 34px; border-left:1px solid var(--cb-border); }
+.cb-theme .cb-about-stats-section { padding:70px 0 110px; }
+.cb-theme .cb-about-stats-grid { gap:18px; }
+.cb-theme .cb-about-stat-card { min-height:190px; padding:26px; }
+.cb-theme .cb-about-stat-card p { margin:16px 0 0; }
+.cb-theme .cb-overview-section { padding:110px 0; }
+.cb-theme .cb-overview-grid { display:grid; grid-template-columns:210px minmax(0,1fr); gap:70px; }
+.cb-theme .cb-overview-label { padding-top:12px; }
+.cb-theme .cb-overview-content > p { max-width:850px; }
+.cb-theme .cb-mission-vision-grid { gap:18px; margin-top:46px; background:transparent; }
+.cb-theme .cb-mv-card { min-height:280px; padding:36px; }
+.cb-theme .cb-principles-section { padding:110px 0; }
+.cb-theme .cb-section-title-center { margin-bottom:52px; }
+.cb-theme .cb-principles-grid { grid-template-columns:repeat(12,minmax(0,1fr)); gap:18px; }
+.cb-theme .cb-principle-card,
+.cb-theme .cb-principles-grid .cb-principle-card:nth-child(3),
+.cb-theme .cb-principles-grid .cb-principle-card:nth-child(4) { grid-column:span 6; min-height:260px; padding:34px; }
+.cb-theme .cb-principle-card.large { grid-column:span 7; }
+.cb-theme .cb-principle-card:nth-child(2) { grid-column:span 5; }
+.cb-theme .cb-principle-card.image-card {
+  background:
+    linear-gradient(145deg,rgba(13,11,17,.88),rgba(15,10,25,.82)),
+    url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+}
+.cb-theme .cb-advantage-section { padding:110px 0 130px; }
+.cb-theme .cb-advantage-grid { grid-template-columns:1.15fr repeat(3,1fr); gap:18px; padding:0; border:0; }
+.cb-theme .cb-advantage-intro { display:flex; flex-direction:column; justify-content:flex-end; padding:28px; }
+.cb-theme .cb-advantage-card { min-height:300px; padding:28px; }
+
+/* Services: alternating-width bento catalogue. */
+.cb-theme .cb-services-grid-section { padding:110px 0 130px; }
+.cb-theme .cb-service-grid { grid-template-columns:repeat(12,minmax(0,1fr)); gap:18px; }
+.cb-theme .cb-service-box { position:relative; grid-column:span 6; min-height:500px; padding:38px; }
+.cb-theme .cb-service-box:nth-child(1), .cb-theme .cb-service-box:nth-child(4), .cb-theme .cb-service-box:nth-child(5) { grid-column:span 7; }
+.cb-theme .cb-service-box:nth-child(2), .cb-theme .cb-service-box:nth-child(3), .cb-theme .cb-service-box:nth-child(6) { grid-column:span 5; }
+.cb-theme .cb-service-box-icon { margin-bottom:30px; }
+.cb-theme .cb-service-box h2 { max-width:500px; font-size:clamp(1.8rem,3vw,2.7rem); }
+.cb-theme .cb-services-cta-section { padding:0 0 130px; }
+.cb-theme .cb-services-cta-box { min-height:350px; padding:58px; border-radius:24px; }
+
+/* Portfolio: larger previews and alternating feature rhythm. */
+.cb-theme .cb-portfolio-hero { text-align:center; }
+.cb-theme .cb-portfolio-hero .cb-portfolio-eyebrow { justify-content:center; }
+.cb-theme .cb-portfolio-hero h1 { max-width:980px; margin-inline:auto; font-size:clamp(3.5rem,7vw,6.5rem); }
+.cb-theme .cb-portfolio-hero p { margin-inline:auto; }
+.cb-theme .cb-portfolio-work { padding:120px 0 140px; }
+.cb-theme .cb-portfolio-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:74px 28px; }
+.cb-theme .cb-project-card:nth-child(3n + 1) { grid-column:span 2; }
+.cb-theme .cb-project-card:nth-child(3n + 1) .cb-project-preview { max-width:none; }
+.cb-theme .cb-project-card:nth-child(3n + 1) .cb-project-viewport { aspect-ratio:2.2 / 1; }
+.cb-theme .cb-project-info { padding:22px 4px 0; }
+.cb-theme .cb-project-info h3 { font-size:clamp(1.55rem,2.5vw,2.25rem); }
+
+/* FAQ: split introduction and accordion column. */
+.cb-theme .cb-faq-section { padding:110px 0 130px; }
+.cb-theme .cb-faq-container { display:grid; grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr); gap:90px; align-items:start; }
+.cb-theme .cb-faq-header { position:sticky; top:120px; margin:0; text-align:left; }
+.cb-theme .cb-faq-header h1 { font-size:clamp(2.8rem,4.6vw,4.7rem); line-height:.98; }
+.cb-theme .cb-faq-header h1::before,
+.cb-theme .cb-faq-header h1::after { display:none; }
+.cb-theme .cb-faq-header > p:last-child { margin:24px 0 0; }
+.cb-theme .cb-faq-list { gap:12px; }
+.cb-theme .cb-faq-item { padding:0 22px; }
+.cb-theme .cb-faq-question { min-height:82px; padding:20px 0; }
+
+/* Contact/support: wide work surface with a sticky information rail. */
+.cb-theme .cb-contact-main-section { padding:90px 0 130px; }
+.cb-theme .cb-contact-main-grid { grid-template-columns:minmax(0,1.45fr) minmax(300px,.55fr); gap:28px; }
+.cb-theme .cb-contact-form-card { padding:42px; }
+.cb-theme .cb-contact-sidebar { position:sticky; top:110px; gap:18px; }
+.cb-theme :is(.cb-contact-info-block,.cb-hours-block,.cb-contact-next,.cb-support-ai-note) { padding:28px; background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015)),#0d0c10; border:1px solid var(--cb-border); border-radius:16px; }
+.cb-theme .cb-contact-sidebar :is(h2) { font-size:1.35rem; }
+.cb-theme .cb-support-options { padding:80px 0 0; }
+.cb-theme .cb-support-options-grid { gap:18px; }
+.cb-theme .cb-support-option { min-height:280px; padding:30px; }
+.cb-theme .cb-support-option > svg { width:34px; height:34px; }
+.cb-theme .cb-support-track-section { padding:0 0 130px; }
+
+/* Legal: more comfortable reading column and stronger navigation rail. */
+.cb-theme .cb-legal-hero { padding:110px 0 100px; }
+.cb-theme .cb-legal-layout { grid-template-columns:280px minmax(0,760px); gap:90px; padding-block:100px 140px; }
+.cb-theme .cb-legal-toc { padding:22px; border:1px solid var(--cb-border); border-radius:14px; }
+.cb-theme .cb-legal-toc nav { border-left:0; }
+.cb-theme .cb-legal-content section { padding-bottom:54px; margin-bottom:54px; }
+
+@media (max-width:1050px) {
+  .cb-theme .cb-section-header { grid-template-columns:1fr; gap:20px; }
+  .cb-theme .cb-service-card, .cb-theme .cb-service-card.wide, .cb-theme .cb-service-card:nth-child(5) { grid-column:span 6; }
+  .cb-theme .cb-process-grid { grid-template-columns:repeat(3,1fr); }
+  .cb-theme .cb-process-grid::before { display:none; }
+  .cb-theme .cb-about-hero-grid { grid-template-columns:1fr; gap:34px; }
+  .cb-theme .cb-about-hero-right { padding:24px 0 0; border-top:1px solid var(--cb-border); border-left:0; }
+  .cb-theme .cb-overview-grid { grid-template-columns:1fr; gap:24px; }
+  .cb-theme .cb-advantage-grid { grid-template-columns:repeat(2,1fr); }
+  .cb-theme .cb-service-box, .cb-theme .cb-service-box:nth-child(1), .cb-theme .cb-service-box:nth-child(2), .cb-theme .cb-service-box:nth-child(3), .cb-theme .cb-service-box:nth-child(4), .cb-theme .cb-service-box:nth-child(5), .cb-theme .cb-service-box:nth-child(6) { grid-column:span 6; }
+  .cb-theme .cb-contact-main-grid { grid-template-columns:1fr; }
+  .cb-theme .cb-contact-sidebar { position:static; display:grid; grid-template-columns:repeat(3,1fr); }
+  .cb-theme .cb-faq-container { grid-template-columns:1fr; gap:50px; }
+  .cb-theme .cb-faq-header { position:static; max-width:700px; }
+}
+
+@media (max-width:768px) {
+  .cb-theme :is(.cb-container,.cb-about-container,.cb-services-container,.cb-portfolio-container,.cb-contact-container,.cb-faq-container,.cb-legal-shell,.cb-footer-container) { width:min(100% - 28px,1180px); }
+  .cb-theme .cb-layout-eyebrow { margin-bottom:16px; }
+  .cb-theme .cb-hero { min-height:auto; padding:68px 0 0; }
+  .cb-theme .cb-hero-layout { min-height:640px; padding:40px 0 90px; }
+  .cb-theme .cb-hero h1 { font-size:clamp(2.8rem,14vw,4.5rem); }
+  .cb-theme .cb-hero p:not(.cb-layout-eyebrow) { font-size:1rem; }
+  .cb-theme .cb-hero-capabilities { display:none; }
+  .cb-theme .cb-particle-network { opacity:.88; }
+  .cb-theme :is(.cb-services-section,.cb-process-section,.cb-cta-section,.cb-overview-section,.cb-principles-section,.cb-advantage-section,.cb-services-grid-section,.cb-portfolio-work,.cb-faq-section,.cb-contact-main-section) { padding:78px 0; }
+  .cb-theme .cb-section-header h2, .cb-theme .cb-process-header h2 { font-size:2.6rem; }
+  .cb-theme .cb-services-grid { grid-template-columns:1fr; }
+  .cb-theme .cb-service-card, .cb-theme .cb-service-card.wide, .cb-theme .cb-service-card:nth-child(5) { grid-column:auto; min-height:280px; padding:28px; }
+  .cb-theme .cb-process-grid { grid-template-columns:1fr; }
+  .cb-theme .cb-process-item { min-height:auto; padding:24px 24px 24px 82px; text-align:left; }
+  .cb-theme .cb-process-number { top:24px; left:24px; transform:none; }
+  .cb-theme .cb-cta-box { align-items:flex-start; flex-direction:column; min-height:0; padding:38px 28px; }
+  .cb-theme :is(.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero) { padding:75px 0 70px; }
+  .cb-theme :is(.cb-services-hero-content,.cb-contact-hero-content) h1 { font-size:clamp(2.8rem,13vw,4.5rem); }
+  .cb-theme .cb-about-stats-section { padding:54px 0 78px; }
+  .cb-theme .cb-about-stats-grid { grid-template-columns:1fr; }
+  .cb-theme .cb-mission-vision-grid { grid-template-columns:1fr; }
+  .cb-theme .cb-mv-card { min-height:230px; }
+  .cb-theme .cb-principles-grid { grid-template-columns:1fr; }
+  .cb-theme .cb-principle-card, .cb-theme .cb-principles-grid .cb-principle-card:nth-child(3), .cb-theme .cb-principles-grid .cb-principle-card:nth-child(4), .cb-theme .cb-principle-card.large, .cb-theme .cb-principle-card:nth-child(2) { grid-column:auto; min-height:230px; }
+  .cb-theme .cb-advantage-grid { grid-template-columns:1fr; }
+  .cb-theme .cb-advantage-card { min-height:230px; }
+  .cb-theme .cb-service-grid { grid-template-columns:1fr; }
+  .cb-theme .cb-service-box, .cb-theme .cb-service-box:nth-child(1), .cb-theme .cb-service-box:nth-child(2), .cb-theme .cb-service-box:nth-child(3), .cb-theme .cb-service-box:nth-child(4), .cb-theme .cb-service-box:nth-child(5), .cb-theme .cb-service-box:nth-child(6) { grid-column:auto; min-height:auto; padding:30px; }
+  .cb-theme .cb-services-cta-section { padding:0 0 80px; }
+  .cb-theme .cb-services-cta-box { padding:36px 28px; }
+  .cb-theme .cb-portfolio-grid { grid-template-columns:1fr; gap:54px; }
+  .cb-theme .cb-project-card:nth-child(3n + 1) { grid-column:auto; }
+  .cb-theme .cb-project-card:nth-child(3n + 1) .cb-project-viewport { aspect-ratio:16 / 9; }
+  .cb-theme .cb-contact-form-card { padding:26px 20px; }
+  .cb-theme .cb-contact-sidebar { grid-template-columns:1fr; }
+  .cb-theme .cb-support-options { padding-top:54px; }
+  .cb-theme .cb-legal-layout { grid-template-columns:1fr; gap:44px; padding-block:70px 90px; }
+  .cb-theme .cb-legal-toc { position:static; }
+}
+
+@media (max-width:480px) {
+  .cb-theme .cb-hero h1 br, .cb-theme :is(.cb-about-hero,.cb-services-hero) h1 br { display:none; }
+  .cb-theme .cb-hero-layout { min-height:590px; }
+  .cb-theme .cb-project-info { gap:14px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .cb-theme :is(.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero,.cb-legal-hero)::after { animation:none; }
+}

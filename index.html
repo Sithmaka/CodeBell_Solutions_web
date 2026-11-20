@@ -4,12 +4,22 @@
     <!-- Basic -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050506" />
+    <style>
+      html,body,#root{min-height:100%;margin:0;background:#050506;color:#f8f7fb}
+      .cb-first-paint{position:fixed;inset:0;display:grid;place-items:center;background:radial-gradient(circle,rgba(107,55,255,.16),transparent 20rem),#050506;font:700 11px/1 Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8e8996}
+      .cb-first-paint-core{position:relative;display:grid;width:72px;aspect-ratio:1;place-items:center;margin-bottom:18px;color:#fff;background:radial-gradient(circle,rgba(136,90,255,.2),#0a090d 66%);border:1px solid rgba(181,151,255,.3);border-radius:22px;box-shadow:0 0 46px rgba(105,53,255,.26)}
+      .cb-first-paint-core:before,.cb-first-paint-core:after{position:absolute;inset:-16px;content:"";border:1px solid rgba(170,137,255,.2);border-radius:27px;animation:cb-first-ring 3s linear infinite}
+      .cb-first-paint-core:after{inset:-31px;opacity:.4;animation-direction:reverse;animation-duration:5s}
+      @keyframes cb-first-ring{to{transform:rotate(1turn)}}
+      @media(prefers-reduced-motion:reduce){.cb-first-paint-core:before,.cb-first-paint-core:after{animation:none}}
+    </style>
 
     <!-- SEO -->
     <meta name="author" content="CodeBell" />
     <meta
       name="description"
-      content="CodeBell delivers professional website development, business systems, and digital solutions for modern businesses."
+      content="CodeBell develops custom software, ERP/CRM/HRMS systems, automation, websites, e-commerce, mobile apps, integrations, and maintenance."
     />
     <meta
       name="keywords"
@@ -17,23 +27,27 @@
     />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="CodeBell" />
+    <meta property="og:title" content="Custom Software &amp; Business Systems | CodeBell" />
     <meta
       property="og:description"
-      content="Professional website development and digital solutions for modern businesses."
+      content="Software and digital systems designed around the way your business needs to work."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.codebell.online/" />
+    <meta property="og:site_name" content="CodeBell" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Custom Software &amp; Business Systems | CodeBell" />
+    <meta name="twitter:description" content="Software and digital systems designed around the way your business needs to work." />
 
     <!-- Title -->
-    <title>CodeBell Solutions</title>
+    <title>Custom Software &amp; Business Systems | CodeBell</title>
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.png" />
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root"><div class="cb-first-paint" role="status"><div><div class="cb-first-paint-core">CB</div>Loading CodeBell</div></div></div>
 
     <!-- React Entry -->
     <script type="module" src="/src/main.jsx"></script>

@@ -1,0 +1,265 @@
+/* Support Center — builds on the contact page styles (contact.css) */
+
+.cb-support-options {
+  padding: 0 0 20px;
+}
+
+.cb-support-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.cb-support-option {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cb-support-option:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(79, 31, 255, 0.08);
+}
+
+.cb-support-option > svg {
+  color: #4f1fff;
+}
+
+.cb-support-option h2 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #171a23;
+}
+
+.cb-support-option p {
+  color: #6f7079;
+  line-height: 1.75;
+  flex: 1;
+}
+
+.cb-support-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  color: #4f1fff;
+  cursor: pointer;
+}
+
+.cb-support-link-btn:hover {
+  color: #3f12e0;
+}
+
+.cb-support-section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #21242e;
+  margin-bottom: 26px;
+}
+
+.cb-support-page .cb-contact-main-section {
+  scroll-margin-top: 90px;
+}
+
+.cb-support-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.cb-support-consent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 26px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #5d5e67;
+  cursor: pointer;
+}
+
+.cb-support-consent input {
+  margin-top: 4px;
+  accent-color: #4f1fff;
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.cb-support-consent a {
+  color: #4f1fff;
+  font-weight: 700;
+}
+
+.cb-support-alert,
+.cb-support-note {
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.cb-support-alert {
+  background: #fff1ef;
+  color: #a23a22;
+}
+
+.cb-support-alert a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.cb-support-note {
+  background: #f2efff;
+  color: #3f2bb0;
+}
+
+.cb-support-btn-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cb-contact-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
+
+.cb-support-success {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: #ffffff;
+  padding: 26px;
+}
+
+.cb-support-success > svg {
+  color: #1f9d55;
+  flex: none;
+}
+
+.cb-support-success h3 {
+  font-size: 1.25rem;
+  color: #171a23;
+  margin-bottom: 8px;
+}
+
+.cb-support-success p {
+  color: #5d5e67;
+  margin-bottom: 14px;
+}
+
+.cb-support-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.cb-support-steps li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 14px;
+}
+
+.cb-support-step-no {
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #7b58ff;
+  letter-spacing: 0.06em;
+  padding-top: 2px;
+}
+
+.cb-support-steps strong {
+  display: block;
+  color: #2a2d37;
+  margin-bottom: 4px;
+}
+
+.cb-support-steps p {
+  color: #6f7079;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.cb-support-ai-note {
+  display: flex;
+  gap: 12px;
+  background: #f2efff;
+  padding: 18px;
+  color: #3f2bb0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.cb-support-ai-note svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+.cb-support-track-section {
+  padding: 0 0 90px;
+  scroll-margin-top: 90px;
+}
+
+.cb-support-track-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.cb-support-track-result {
+  background: #ffffff;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cb-support-track-result p {
+  color: #5d5e67;
+}
+
+.cb-support-track-result small {
+  color: #9a9ba3;
+}
+
+.cb-support-status-pill {
+  align-self: flex-start;
+  background: #ececff;
+  color: #4f1fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+@media (max-width: 1000px) {
+  .cb-support-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cb-support-track-form {
+    grid-template-columns: 1fr;
+  }
+}

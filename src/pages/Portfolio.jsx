@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Kanvisor",
     category: "Business Website",
-    url: "https://kanvisor-website.vercel.app/",
+    url: "https://www.kanvisor.com/",
   },
   {
     title: "CodeBell Business Systems",
@@ -29,7 +29,7 @@ const projects = [
   {
     title: "DT Store",
     category: "E-commerce Website",
-    url: "https://dt-store-web.vercel.app/",
+    url: "https://www.dtstore.lk/",
   },
   {
     title: "Events by RAW",
@@ -44,12 +44,12 @@ const projects = [
   {
     title: "GrowFirst",
     category: "Business Website",
-    url: "https://growfirst-website.vercel.app/",
+    url: "https://www.growfirst.net/",
   },
   {
     title: "RBM",
     category: "Corporate Website",
-    url: "https://rbm-website-khaki.vercel.app/",
+    url: "https://www.refocusbusinessmodels.com/",
   },
   {
     title: "Aurelia Gems",
@@ -84,7 +84,7 @@ const projects = [
   {
     title: "Rigor",
     category: "Business Website",
-    url: "https://rigor-web.vercel.app/",
+    url: "https://www.rigorconsultinglk.com/",
   },
   {
     title: "WizeSage",
@@ -95,6 +95,36 @@ const projects = [
     title: "NovaStack Lab",
     category: "Technology Website",
     url: "https://www.novastacklab.site/",
+  },
+  {
+    title: "Hastra",
+    category: "Business Website",
+    url: "https://www.hastraa.sa/",
+  },
+  {
+    title: "ACECAM",
+    category: "Education Website",
+    url: "https://www.acecam.edu.lk/",
+  },
+  {
+    title: "ReFocus Technology Solutions",
+    category: "Technology Website",
+    url: "https://www.refocustechnologysolutions.com/",
+  },
+  {
+    title: "Namaa",
+    category: "Business Website",
+    url: "https://namaa-website.vercel.app/en",
+  },
+  {
+    title: "Our Wedding Sri Lanka",
+    category: "Wedding Platform",
+    url: "https://www.ourweddingsrilanka.com/",
+  },
+  {
+    title: "GHWSSL 2027",
+    category: "Event Application",
+    url: "https://ghwssl-2027-app.vercel.app/",
   },
 ];
 
@@ -107,12 +137,12 @@ export default function Portfolio() {
         <title>Our Portfolio | CodeBell</title>
         <meta
           name="description"
-          content="Explore websites, digital platforms, and business experiences designed and developed by CodeBell."
+          content="Explore public websites and digital platforms featured in the CodeBell portfolio."
         />
         <meta property="og:title" content="Our Portfolio | CodeBell" />
         <meta
           property="og:description"
-          content="A selection of digital experiences designed and developed by CodeBell."
+          content="A selection of public websites and digital platforms featured by CodeBell."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.codebell.online/portfolio" />
@@ -129,8 +159,8 @@ export default function Portfolio() {
               Digital experiences built to <span>make an impact.</span>
             </h1>
             <p>
-              A selection of websites and digital platforms we have designed and
-              developed for ambitious brands and growing businesses.
+              Browse public websites and platforms featured in our portfolio.
+              Project scope and engagement details are available during a consultation.
             </p>
           </div>
         </section>
@@ -142,7 +172,7 @@ export default function Portfolio() {
                 <span>Featured projects</span>
                 <h2 id="portfolio-heading">Explore our work</h2>
               </div>
-              <p>{String(projects.length).padStart(2, "0")} live projects</p>
+              <p>{String(projects.length).padStart(2, "0")} project links</p>
             </div>
 
             <div className="cb-portfolio-grid">
@@ -212,7 +242,7 @@ export default function Portfolio() {
           <div className="cb-portfolio-container">
             <p>Have a project in mind?</p>
             <h2>Let’s create something exceptional.</h2>
-            <Link to="/contact" className="cb-portfolio-cta-link">
+            <Link to="/contact" className="cb-portfolio-cta-link" data-cta-id="portfolio_project" data-consultation="true">
               Start a project <ArrowUpRight size={20} />
             </Link>
           </div>

@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import {
   Lightbulb,
   BadgeCheck,
@@ -16,55 +17,51 @@ import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import "../styles/about.css";
 
-const startYear = 2022;
-const currentYear = new Date().getFullYear();
-const yearsOfExperience = Math.max(currentYear - startYear, 1);
-
 const stats = [
   {
     icon: <Smile size={42} strokeWidth={2.1} />,
-    number: "150",
-    title: "Happy Clients",
-    text: "with a growing list of satisfied.",
+    number: "Discover",
+    title: "Understand the problem",
+    text: "before recommending a technical direction.",
   },
   {
     icon: <ClipboardList size={42} strokeWidth={2.1} />,
-    number: "260",
-    title: "Projects",
-    text: "having successfully delivered.",
+    number: "Deliver",
+    title: "Work in clear stages",
+    text: "with visible decisions, milestones, and testing.",
   },
   {
     icon: <Clock3 size={42} strokeWidth={2.1} />,
-    number: String(yearsOfExperience),
-    title: yearsOfExperience > 1 ? "Years of experience" : "Year of experience",
-    text: "in the industry, our team brings a wealth of knowledge and a deep understanding of technology trends.",
+    number: "Improve",
+    title: "Support what ships",
+    text: "with practical maintenance and improvement options.",
   },
 ];
 
 const principleCards = [
   {
     icon: <Lightbulb size={48} strokeWidth={2.1} />,
-    title: "Calculated Innovation.",
+    title: "Purposeful Technology.",
     description:
-      "We adopt bleeding-edge tech not for the sake of novelty, but when it mathematically improves performance and resilience.",
+      "We choose technology for fit, maintainability, security, and the outcome it needs to support.",
     large: true,
   },
   {
     icon: <BadgeCheck size={44} strokeWidth={2.1} />,
-    title: "Absolute Quality.",
+    title: "Quality Controls.",
     description:
-      "Our code is our craft. Every deployment must meet brutal standards.",
+      "Reviews, testing, and release checks are planned around the risks of each project.",
   },
   {
     icon: <Handshake size={44} strokeWidth={2.1} />,
-    title: "Immutable Trust.",
+    title: "Clear Communication.",
     description:
-      "Transparency in execution. No black boxes. Just results.",
+      "Decisions, assumptions, dependencies, and trade-offs should be visible to the people involved.",
   },
   {
-    title: "Relentless Focus.",
+    title: "Focused Delivery.",
     description:
-      "We strip away the non-essential to concentrate entirely on the critical path to system performance.",
+      "We prioritize the work that directly supports the agreed users, workflow, and release outcome.",
     imageCard: true,
     wide: true,
   },
@@ -73,21 +70,21 @@ const principleCards = [
 const advantageCards = [
   {
     icon: <ShieldCheck size={38} strokeWidth={2.1} />,
-    title: "Deep Experience",
+    title: "Practical Engineering",
     description:
-      "Strong project delivery experience across websites, business systems, and scalable digital platforms.",
+      "We connect technical decisions to the people, process, constraints, and operating needs behind the project.",
   },
   {
     icon: <GitBranch size={38} strokeWidth={2.1} />,
     title: "End-to-End Execution",
     description:
-      "From discovery and UI/UX to development, testing, launch, and long-term optimization.",
+      "A project can cover discovery, UI/UX, development, testing, launch, and an agreed improvement plan.",
   },
   {
     icon: <Headset size={38} strokeWidth={2.1} />,
-    title: "Unwavering Support",
+    title: "Post-Launch Options",
     description:
-      "Continuous technical support, improvement cycles, and practical guidance after launch.",
+      "Maintenance, change, and support needs can be planned around the system and operating context.",
   },
 ];
 
@@ -95,10 +92,10 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About CodeBell | Architects of Scale</title>
+        <title>About CodeBell | Practical Software Engineering</title>
         <meta
           name="description"
-          content="Learn about CodeBell, our mission, vision, values, and the engineering approach behind high-performance digital solutions."
+          content="Learn how CodeBell approaches discovery, software delivery, quality, communication, launch, and post-launch improvement."
         />
         <meta
           name="keywords"
@@ -106,11 +103,11 @@ export default function About() {
         />
         <meta
           property="og:title"
-          content="About CodeBell | Architects of Scale"
+          content="About CodeBell | Practical Software Engineering"
         />
         <meta
           property="og:description"
-          content="CodeBell is an engineering agency dedicated to crafting high-performance, immovable technical foundations."
+          content="CodeBell designs software and digital systems around defined business problems and practical delivery plans."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.codebell.online/about" />
@@ -124,18 +121,19 @@ export default function About() {
           <div className="cb-about-container">
             <div className="cb-about-hero-grid">
               <div className="cb-about-hero-left">
+                <p className="cb-layout-eyebrow">ABOUT CODEBELL</p>
                 <h1>
-                  Building the
+                  Software built around
                   <br />
-                  <span>Monolith.</span>
+                  <span>real operations.</span>
                 </h1>
               </div>
 
               <div className="cb-about-hero-right">
                 <p>
-                  CodeBell is an engineering agency dedicated to crafting
-                  high-performance, immovable technical foundations for modern
-                  businesses and ambitious digital growth.
+                  CodeBell designs and develops software, business systems,
+                  automation, websites, and mobile products around a defined
+                  business problem and a practical delivery plan.
                 </p>
               </div>
             </div>
@@ -166,14 +164,12 @@ export default function About() {
               <div className="cb-overview-label">OVERVIEW &amp; PURPOSE</div>
 
               <div className="cb-overview-content">
-                <h2>Architects of scale.</h2>
+                <h2>Technology with a clear business purpose.</h2>
                 <p>
-                  We are not just developers; we are digital architects. Since
-                  2022, CodeBell has been building resilient, scalable systems
-                  for businesses that need performance, reliability, and long-term
-                  technical value. From internal business tools to public-facing
-                  digital platforms, our solutions are designed to handle growth
-                  with confidence.
+                  We work from the current process, the people affected, the
+                  constraints, and the result the business needs. From internal
+                  tools to customer-facing platforms, the aim is to create a
+                  solution that can be understood, operated, and improved after launch.
                 </p>
 
                 <div className="cb-about-tags">
@@ -216,7 +212,7 @@ export default function About() {
         <section className="cb-principles-section">
           <div className="cb-about-container">
             <div className="cb-section-title-center">
-              <h2>Principles of the Monolith.</h2>
+              <h2>Principles that guide the work.</h2>
             </div>
 
             <div className="cb-principles-grid">
@@ -251,9 +247,7 @@ export default function About() {
                   Why businesses trust us to build and improve their digital
                   foundation.
                 </p>
-                <a href="#!" className="cb-case-link">
-                  VIEW CASE STUDIES
-                </a>
+                <Link to="/portfolio" className="cb-case-link">VIEW SELECTED WORK</Link>
               </div>
 
               {advantageCards.map((item, index) => (

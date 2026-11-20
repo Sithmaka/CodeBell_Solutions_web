@@ -14,6 +14,7 @@ import "../styles/services.css";
 
 const services = [
   {
+    id: "website_ecommerce",
     icon: <Globe size={36} strokeWidth={2.2} />,
     title: "Website Dev",
     description:
@@ -25,6 +26,7 @@ const services = [
     ],
   },
   {
+    id: "custom_software",
     icon: <LayoutGrid size={36} strokeWidth={2.2} />,
     title: "Web App Dev",
     description:
@@ -36,6 +38,7 @@ const services = [
     ],
   },
   {
+    id: "mobile_app",
     icon: <Smartphone size={36} strokeWidth={2.2} />,
     title: "Mobile App Dev",
     description:
@@ -47,6 +50,7 @@ const services = [
     ],
   },
   {
+    id: "website_ecommerce",
     icon: <ShoppingCart size={36} strokeWidth={2.2} />,
     title: "E-commerce",
     description:
@@ -58,6 +62,7 @@ const services = [
     ],
   },
   {
+    id: "erp_crm_hrms",
     icon: <BriefcaseBusiness size={36} strokeWidth={2.2} />,
     title: "Business Management",
     description:
@@ -69,6 +74,7 @@ const services = [
     ],
   },
   {
+    id: "other",
     icon: <PencilRuler size={36} strokeWidth={2.2} />,
     title: "UI/UX",
     description:
@@ -110,6 +116,7 @@ export default function Services() {
         <section className="cb-services-hero">
           <div className="cb-services-container">
             <div className="cb-services-hero-content">
+              <p className="cb-layout-eyebrow">CAPABILITIES</p>
               <h1>
                 Our Specialized Tech
                 <br />
@@ -129,7 +136,8 @@ export default function Services() {
           <div className="cb-services-container">
             <div className="cb-service-grid">
               {services.map((service, index) => (
-                <article className="cb-service-box" key={index}>
+                <article className="cb-service-box" key={index} data-service={service.id}>
+                  <span className="cb-card-index">{String(index + 1).padStart(2, "0")}</span>
                   <div className="cb-service-box-icon">{service.icon}</div>
 
                   <h2>{service.title}</h2>
@@ -141,8 +149,8 @@ export default function Services() {
                     ))}
                   </ul>
 
-                  <Link to="/contact" className="cb-service-learn-more">
-                    LEARN MORE <span>→</span>
+                  <Link to={`/contact?service=${service.id}`} className="cb-service-learn-more" data-cta-id={`services_${service.id}`} data-service={service.id} data-consultation="true">
+                    DISCUSS THIS SERVICE <span>→</span>
                   </Link>
                 </article>
               ))}
@@ -166,11 +174,11 @@ export default function Services() {
               </div>
 
               <div className="cb-services-cta-right">
-                <Link to="/contact" className="cb-services-primary-btn">
+                <Link to="/contact" className="cb-services-primary-btn" data-cta-id="services_final_project" data-consultation="true">
                   Start a Project
                 </Link>
-                <Link to="/contact" className="cb-services-secondary-btn">
-                  View Pricing
+                <Link to="/contact" className="cb-services-secondary-btn" data-cta-id="services_estimate" data-consultation="true">
+                  Request an Estimate
                 </Link>
               </div>
             </div>

@@ -1,0 +1,98 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function role() {
+      return signedIn() && request.auth.token.crm_role is string
+        ? request.auth.token.crm_role
+        : '';
+    }
+
+    function brands() {
+      return signedIn() && request.auth.token.crm_brands is list
+        ? request.auth.token.crm_brands
+        : [];
+    }
+
+    function hasBrand(brandId) {
+      return brandId is string && brands().hasAny([brandId]);
+    }
+
+    function isManager() {
+      return role() in ['super_admin', 'admin', 'sales_manager'];
+    }
+
+    function canReadLead(data) {
+      return hasBrand(data.brandId) && (
+        isManager() ||
+        role() == 'viewer' ||
+        (role() == 'sales_agent' && data.assignedTo == request.auth.uid)
+      );
+    }
+
+    match /brands/{brandId} {
+      allow read: if hasBrand(brandId);
+      allow write: if false;
+    }
+
+    match /leads/{leadId} {
+      allow read: if canReadLead(resource.data);
+      // All mutations go through the authenticated CRM Cloud Function so that
+      // permission checks and audit writes are atomic and cannot be bypassed.
+      allow create, update, delete: if false;
+    }
+
+    match /contacts/{contactId} {
+      allow read: if hasBrand(resource.data.brandId) && role() in
+        ['super_admin', 'admin', 'sales_manager', 'viewer'];
+      allow write: if false;
+    }
+
+    match /companies/{companyId} {
+      allow read: if hasBrand(resource.data.brandId) && role() in
+        ['super_admin', 'admin', 'sales_manager', 'viewer'];
+      allow write: if false;
+    }
+
+    match /activities/{activityId} {
+      allow read: if hasBrand(resource.data.brandId) && (
+        isManager() || role() == 'viewer' ||
+        (role() == 'sales_agent' && resource.data.assignedTo == request.auth.uid)
+      );
+      allow write: if false;
+    }
+
+    match /crm_users/{userId} {
+      allow read: if signedIn() && (
+        request.auth.uid == userId ||
+        (isManager() && resource.data.brands.hasAny(brands()))
+      );
+      allow write: if false;
+    }
+
+    match /audit_logs/{auditId} {
+      allow read: if hasBrand(resource.data.brandId) && role() in ['super_admin', 'admin'];
+      allow write: if false;
+    }
+
+    match /automation_events/{eventId} {
+      allow read: if hasBrand(resource.data.brandId) && role() in
+        ['super_admin', 'admin', 'sales_manager'];
+      allow write: if false;
+    }
+
+    // Server-only operational collections.
+    match /idempotency_keys/{document=**} { allow read, write: if false; }
+    match /rate_limits/{document=**} { allow read, write: if false; }
+    match /counters/{document=**} { allow read, write: if false; }
+    match /crm_config/{document=**} { allow read, write: if false; }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

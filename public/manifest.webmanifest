@@ -3,8 +3,8 @@
   "short_name": "CodeBell",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f6f6f6",
-  "theme_color": "#5526ff",
+  "background_color": "#050506",
+  "theme_color": "#050506",
   "icons": [
     {
       "src": "/favicon.ico",

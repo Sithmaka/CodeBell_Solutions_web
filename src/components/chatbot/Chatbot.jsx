@@ -1,16 +1,16 @@
-import { useMemo, useState } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { MessageCircle, X, Send, LoaderCircle, RotateCcw } from "lucide-react";
+import {
+  SUPPORT_ENDPOINTS,
+  getChatSessionId,
+  sendChatMessage,
+  whatsappLink,
+} from "../../lib/supportApi";
+import { CHATBOT_SERVICE_OPTIONS, canonicalServiceId } from "../../config/services";
 import "../../styles/chatbot.css";
 
-const SERVICES = [
-  "Website Development",
-  "Web App Development",
-  "Mobile App Development",
-  "Business Systems",
-  "AI & Automation",
-  "UI/UX Design",
-  "E-commerce",
-];
+const SERVICES = CHATBOT_SERVICE_OPTIONS;
 
 const SERVICE_QUESTIONS = {
   "Website Development": [
@@ -521,25 +521,44 @@ function OptionButtons({ options, onSelect }) {
   );
 }
 
+const MENU = {
+  project: "Start a new project",
+  support: "Get support from our AI assistant",
+  ticket: "Raise a support ticket",
+  track: "Track a ticket",
+};
+
+const SUPPORT_FALLBACK = {
+  ticket: "Raise a support ticket",
+  whatsapp: "Message us on WhatsApp",
+  project: "Start a new project",
+};
+
+const GREETING = [
+  {
+    sender: "bot",
+    text: "Hi, I’m CodeBell AI, an AI assistant. How can I help you today?",
+  },
+];
+
 export default function Chatbot() {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState("menu"); // menu | project | support
   const [input, setInput] = useState("");
-  const [flowStarted, setFlowStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(-2);
   const [selectedService, setSelectedService] = useState("");
   const [answers, setAnswers] = useState({});
-  const [messages, setMessages] = useState([
-    {
-      sender: "bot",
-      text: "Hi, I’m CodeBell AI. I can guide you through your project requirement gathering.",
-    },
-    {
-      sender: "bot",
-      text: "What is your name?",
-    },
-  ]);
+  const [messages, setMessages] = useState(GREETING);
+  const [aiBusy, setAiBusy] = useState(false);
+  const [supportFallback, setSupportFallback] = useState(false);
+  const bodyRef = useRef(null);
+  const modeRef = useRef(mode);
+  useEffect(() => {
+    modeRef.current = mode;
+  }, [mode]);
 
-  const phoneNumber = "94704416217";
+  const aiChatAvailable = Boolean(SUPPORT_ENDPOINTS.chat);
 
   const activeQuestions = selectedService
     ? [...(SERVICE_QUESTIONS[selectedService] || []), ...COMMON_FINAL_QUESTIONS]
@@ -553,22 +572,96 @@ export default function Chatbot() {
     setMessages((prev) => [...prev, { sender: "user", text }]);
   };
 
+  useEffect(() => {
+    if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+  }, [messages, aiBusy, open]);
+
   const resetChat = () => {
     setInput("");
-    setFlowStarted(false);
+    setMode("menu");
     setCurrentQuestionIndex(-2);
     setSelectedService("");
     setAnswers({});
-    setMessages([
-      {
-        sender: "bot",
-        text: "Hi, I’m CodeBell AI. I can guide you through your project requirement gathering.",
-      },
-      {
-        sender: "bot",
-        text: "What is your name?",
-      },
-    ]);
+    setAiBusy(false);
+    setSupportFallback(false);
+    setMessages(GREETING);
+  };
+
+  const startProject = (echo = true) => {
+    if (echo) pushUser(MENU.project);
+    setMode("project");
+    setCurrentQuestionIndex(-2);
+    pushBot("Great. I’ll guide you through your project requirements.");
+    pushBot("What is your name?");
+  };
+
+  const startSupport = (echo = true) => {
+    if (echo) pushUser(MENU.support);
+    setMode("support");
+    if (aiChatAvailable) {
+      setSupportFallback(false);
+      pushBot(
+        "You’re chatting with Hiruni, CodeBell’s AI support assistant. Ask me about our services or your project, and I can raise a support ticket for you."
+      );
+    } else {
+      setSupportFallback(true);
+      pushBot(
+        "Live AI support is launching soon. Right now you can raise a support ticket or message our team on WhatsApp."
+      );
+    }
+  };
+
+  const goToSupportPage = (section) => {
+    setOpen(false);
+    navigate(`/support#${section}`);
+  };
+
+  // The Support page opens the chat straight into AI support mode.
+  useEffect(() => {
+    const onOpen = (e) => {
+      setOpen(true);
+      if (e.detail?.mode === "support" && modeRef.current === "menu") startSupport(false);
+    };
+    window.addEventListener("cb:open-chat", onOpen);
+    return () => window.removeEventListener("cb:open-chat", onOpen);
+    // startSupport only reads stable values; re-subscribing on every render is unnecessary
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleMenu = (option) => {
+    if (option === MENU.project) startProject();
+    else if (option === MENU.support) startSupport();
+    else if (option === MENU.ticket) goToSupportPage("ticket");
+    else if (option === MENU.track) goToSupportPage("track");
+  };
+
+  const handleSupportFallback = (option) => {
+    if (option === SUPPORT_FALLBACK.ticket) goToSupportPage("ticket");
+    else if (option === SUPPORT_FALLBACK.whatsapp)
+      window.open(whatsappLink("Hello CodeBell, I need support."), "_blank");
+    else if (option === SUPPORT_FALLBACK.project) {
+      setSupportFallback(false);
+      startProject();
+    }
+  };
+
+  const sendSupportMessage = async (text) => {
+    const trimmed = text.trim();
+    if (!trimmed || aiBusy) return;
+    pushUser(trimmed);
+    setInput("");
+    setAiBusy(true);
+    try {
+      const reply = await sendChatMessage(trimmed.slice(0, 1000), getChatSessionId());
+      pushBot(reply || "Sorry, I didn’t catch that. Could you rephrase?");
+    } catch {
+      setSupportFallback(true);
+      pushBot(
+        "I’m having trouble connecting right now. You can raise a support ticket or message our team on WhatsApp."
+      );
+    } finally {
+      setAiBusy(false);
+    }
   };
 
   const summaryText = useMemo(() => {
@@ -593,8 +686,12 @@ ${requirementText}`;
   }, [answers, selectedService]);
 
   const openWhatsApp = () => {
-    const encoded = encodeURIComponent(summaryText);
-    window.open(`https://wa.me/${phoneNumber}?text=${encoded}`, "_blank");
+    window.open(whatsappLink(summaryText), "_blank");
+  };
+
+  const continueToSecureForm = () => {
+    setOpen(false);
+    navigate(`/contact?service=${canonicalServiceId(selectedService)}`);
   };
 
   const askNextQuestion = (nextIndex, serviceName = selectedService) => {
@@ -609,7 +706,7 @@ ${requirementText}`;
     } else {
       setCurrentQuestionIndex(questionSet.length);
       pushBot(
-        "Perfect. I’ve gathered your requirements. Please review the summary below and send it to WhatsApp."
+        "Perfect. Review the summary below, then continue to our secure enquiry form or contact us on WhatsApp."
       );
     }
   };
@@ -623,7 +720,6 @@ ${requirementText}`;
 
     if (currentQuestionIndex === -2) {
       setAnswers((prev) => ({ ...prev, name: trimmed }));
-      setFlowStarted(true);
       setCurrentQuestionIndex(-1);
       pushBot("What service are you looking for?");
       return;
@@ -649,13 +745,18 @@ ${requirementText}`;
 
   const handleManualSubmit = (e) => {
     e.preventDefault();
+    if (mode === "support") {
+      sendSupportMessage(input);
+      return;
+    }
     if (currentQuestionIndex === activeQuestions.length) return;
     handleAnswer(input);
   };
 
-  const showServiceOptions = currentQuestionIndex === -1;
+  const inProject = mode === "project";
+  const showServiceOptions = inProject && currentQuestionIndex === -1;
   const currentQuestion =
-    currentQuestionIndex >= 0 && currentQuestionIndex < activeQuestions.length
+    inProject && currentQuestionIndex >= 0 && currentQuestionIndex < activeQuestions.length
       ? activeQuestions[currentQuestionIndex]
       : null;
 
@@ -664,7 +765,18 @@ ${requirementText}`;
     currentQuestion.type === "options" &&
     Array.isArray(currentQuestion.options);
 
-  const showSummary = currentQuestionIndex === activeQuestions.length;
+  const showSummary = inProject && selectedService && currentQuestionIndex === activeQuestions.length;
+
+  const showInput =
+    (inProject && !showServiceOptions && !showQuestionOptions && !showSummary) ||
+    (mode === "support" && aiChatAvailable && !supportFallback);
+
+  const subtitle =
+    mode === "project"
+      ? "Requirement Assistant"
+      : mode === "support"
+        ? "AI Support Assistant"
+        : "AI Assistant";
 
   return (
     <>
@@ -672,7 +784,7 @@ ${requirementText}`;
         type="button"
         className="cb-chatbot-fab"
         onClick={() => setOpen((prev) => !prev)}
-        aria-label="Open chatbot"
+        aria-label={open ? "Close chatbot" : "Open chatbot"}
       >
         {open ? <X size={24} /> : <MessageCircle size={24} />}
       </button>
@@ -682,25 +794,44 @@ ${requirementText}`;
           <div className="cb-chatbot-header">
             <div>
               <h3>CodeBell AI</h3>
-              <p>Requirement Assistant</p>
+              <p>{subtitle}</p>
             </div>
-            <button
-              type="button"
-              className="cb-chatbot-close"
-              onClick={() => setOpen(false)}
-              aria-label="Close chatbot"
-            >
-              <X size={18} />
-            </button>
+            <div className="cb-chatbot-header-actions">
+              {mode !== "menu" && (
+                <button type="button" className="cb-chatbot-close" onClick={resetChat} aria-label="Back to menu" title="Back to menu">
+                  <RotateCcw size={16} />
+                </button>
+              )}
+              <button
+                type="button"
+                className="cb-chatbot-close"
+                onClick={() => setOpen(false)}
+                aria-label="Close chatbot"
+              >
+                <X size={18} />
+              </button>
+            </div>
           </div>
 
-          <div className="cb-chatbot-body">
+          <div className="cb-chatbot-body" ref={bodyRef}>
             {messages.map((message, index) =>
               message.sender === "bot" ? (
                 <BotMessage key={index}>{message.text}</BotMessage>
               ) : (
                 <UserMessage key={index}>{message.text}</UserMessage>
               )
+            )}
+
+            {mode === "menu" && <OptionButtons options={Object.values(MENU)} onSelect={handleMenu} />}
+
+            {mode === "support" && supportFallback && (
+              <OptionButtons options={Object.values(SUPPORT_FALLBACK)} onSelect={handleSupportFallback} />
+            )}
+
+            {aiBusy && (
+              <div className="cb-chat-loading" role="status">
+                <LoaderCircle size={16} className="cb-spin" /> Hiruni is typing…
+              </div>
             )}
 
             {showServiceOptions && (
@@ -740,6 +871,9 @@ ${requirementText}`;
                 </ul>
 
                 <div className="cb-chat-summary-actions">
+                  <button type="button" className="cb-chat-submit-btn" onClick={continueToSecureForm}>
+                    Continue securely
+                  </button>
                   <button
                     type="button"
                     className="cb-chat-send-btn"
@@ -759,18 +893,26 @@ ${requirementText}`;
             )}
           </div>
 
-          {!showServiceOptions && !showQuestionOptions && !showSummary && (
+          {showInput && (
             <form className="cb-chatbot-input" onSubmit={handleManualSubmit}>
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your answer..."
+                placeholder={mode === "support" ? "Type your question..." : "Type your answer..."}
+                maxLength={1000}
+                disabled={aiBusy}
               />
-              <button type="submit" aria-label="Send">
+              <button type="submit" aria-label="Send" disabled={aiBusy}>
                 <Send size={18} />
               </button>
             </form>
+          )}
+
+          {mode === "support" && (
+            <p className="cb-chat-disclaimer">
+              AI assistant. Pricing, timelines and commitments are confirmed by the CodeBell team.
+            </p>
           )}
         </div>
       )}

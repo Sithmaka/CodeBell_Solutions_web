@@ -1,0 +1,8 @@
+.cb-not-found { min-height: 65vh; display: grid; place-items: center; padding: 80px 20px; color: #17151f; background: radial-gradient(circle at 70% 20%, rgba(91, 44, 255, 0.16), transparent 30%), #f6f6f6; text-align: center; }
+.cb-not-found > div { max-width: 720px; }
+.cb-not-found p { margin-bottom: 10px; color: #5b2cff; font-size: 1rem; font-weight: 800; letter-spacing: 0.18em; }
+.cb-not-found h1 { margin-bottom: 18px; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: 1; letter-spacing: -0.06em; }
+.cb-not-found span { color: #6a6871; font-size: 1.05rem; line-height: 1.7; }
+.cb-not-found-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.cb-not-found-actions a { padding: 14px 19px; color: #fff; background: #5b2cff; border: 1px solid #5b2cff; border-radius: 5px; font-weight: 700; }
+.cb-not-found-actions a:first-child { color: #332d44; background: transparent; border-color: #cfcbd9; }

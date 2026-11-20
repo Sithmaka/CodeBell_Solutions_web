@@ -243,3 +243,45 @@
     transform: rotate(360deg);
   }
 }
+/* Support upgrade: menu, AI support mode (CB-013), lead submission */
+.cb-chatbot-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cb-chat-submit-btn {
+  border: none;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #4f1fff;
+  color: #ffffff;
+}
+
+.cb-chat-submit-btn:disabled,
+.cb-chatbot-input button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.cb-chat-note {
+  margin: 12px 0 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.cb-chat-note-error {
+  color: #a23a22;
+}
+
+.cb-chat-disclaimer {
+  margin: 0;
+  padding: 0 14px 10px;
+  background: #ffffff;
+  font-size: 0.74rem;
+  color: #8a8b94;
+  text-align: center;
+}

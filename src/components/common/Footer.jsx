@@ -13,8 +13,8 @@ export default function Footer() {
           <div className="cb-footer-brand">
             <h3>CodeBell</h3>
             <p>
-              © {year} CodeBell. Built for the kinetic monolith. Premium digital
-              systems engineered for modern businesses.
+              © {year} CodeBell. Software, business systems, automation, and
+              digital products built around practical business needs.
             </p>
           </div>
 
@@ -32,6 +32,9 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/contact">Contact</Link>
+              </li>
+              <li>
+                <Link to="/support">Support</Link>
               </li>
             </ul>
           </div>

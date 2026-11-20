@@ -6,9 +6,14 @@ import {
   Database,
   Rocket,
   Code2,
+  Workflow,
+  Network,
+  RefreshCw,
 } from "lucide-react";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
+import ParticleNetwork from "../components/visuals/ParticleNetwork";
+import { MotionCard, MotionSection, MotionStagger } from "../components/motion/MotionPrimitives";
 import "../styles/home.css";
 
 const logoModules = import.meta.glob("../assets/clients/*.{png,jpg,jpeg,svg,webp}", {
@@ -20,63 +25,86 @@ const clientLogos = Object.values(logoModules);
 
 const services = [
   {
+    id: "custom_software",
     icon: <Monitor size={42} strokeWidth={2.2} />,
     title: "Web Applications",
     description:
-      "Scalable, high-performance web platforms built for complexity and speed.",
+      "Purpose-built applications for workflows, customer experiences, and operational tools.",
   },
   {
+    id: "mobile_app",
     icon: <Smartphone size={42} strokeWidth={2.2} />,
     title: "Mobile Apps",
     description:
-      "Native and cross-platform mobile experiences that command attention.",
+      "Mobile products planned around user tasks, platform requirements, and maintainable delivery.",
   },
   {
+    id: "erp_crm_hrms",
     icon: <Database size={42} strokeWidth={2.2} />,
     title: "Business Systems",
     description:
-      "Robust internal tools and ERP integrations designed for operational dominance.",
+      "Role-based systems for operations, customer relationships, people, approvals, and reporting.",
   },
   {
+    id: "ai_automation",
     icon: <Rocket size={42} strokeWidth={2.2} />,
     title: "AI & Automation",
     description:
-      "Leveraging artificial intelligence to automate workflows and unlock predictive capabilities within your enterprise.",
+      "Workflow and AI-assisted automation designed with clear human controls and integration boundaries.",
     wide: true,
   },
   {
+    id: "website_ecommerce",
     icon: <Code2 size={42} strokeWidth={2.2} />,
     title: "Website Development",
     description:
-      "High-converting, architecturally sound marketing sites.",
+      "Accessible websites and e-commerce experiences built around content, trust, and conversion paths.",
   },
 ];
 
 const processSteps = [
   {
     number: "01",
-    title: "Requirement",
-    text: "Deep dive into technical needs.",
+    title: "Discovery",
+    text: "Understand the problem, users, constraints, and desired outcome.",
   },
   {
     number: "02",
     title: "Design",
-    text: "Architecting the interface.",
+    text: "Define the solution, user journeys, and delivery approach.",
   },
   {
     number: "03",
     title: "Development",
-    text: "Writing kinetic code.",
+    text: "Build in visible, reviewable stages.",
   },
   {
     number: "04",
     title: "Testing",
-    text: "Rigorous quality assurance.",
+    text: "Check functionality, usability, and release risks.",
   },
   {
     number: "05",
     title: "Launch",
-    text: "Deploying the solution.",
+    text: "Release with a clear handover and support path.",
+  },
+];
+
+const foundationPoints = [
+  {
+    icon: <Workflow size={22} strokeWidth={1.8} />,
+    title: "Processes first",
+    text: "We begin with the work, people, constraints, and result the business needs.",
+  },
+  {
+    icon: <Network size={22} strokeWidth={1.8} />,
+    title: "Connected by design",
+    text: "Interfaces, data, roles, and integrations are planned as one operating system.",
+  },
+  {
+    icon: <RefreshCw size={22} strokeWidth={1.8} />,
+    title: "Built to evolve",
+    text: "Clear architecture and delivery stages make the product easier to support and improve.",
   },
 ];
 
@@ -84,19 +112,19 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>CodeBell | Home</title>
+        <title>Custom Software &amp; Business Systems | CodeBell</title>
         <meta
           name="description"
-          content="CodeBell builds authoritative digital solutions including web applications, mobile apps, business systems, AI automation, and websites."
+          content="CodeBell develops custom software, ERP/CRM/HRMS systems, automation, websites, e-commerce, mobile apps, integrations, and maintenance."
         />
         <meta
           name="keywords"
           content="CodeBell, web applications, mobile apps, business systems, AI automation, website development"
         />
-        <meta property="og:title" content="CodeBell | Home" />
+        <meta property="og:title" content="Custom Software & Business Systems | CodeBell" />
         <meta
           property="og:description"
-          content="We build authoritative digital solutions."
+          content="Software and digital systems designed around the way your business needs to work."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.codebell.online/" />
@@ -107,58 +135,46 @@ export default function Home() {
 
       <main className="cb-home">
         <section className="cb-hero">
+        <ParticleNetwork />
         <div className="cb-container">
             <div className="cb-hero-layout">
             <div className="cb-hero-content">
+                <p className="cb-layout-eyebrow">BUILD · AUTOMATE · SCALE</p>
                 <h1>
-                Empowering your businesses with
+                Software that makes your business{" "}
                 <br />
-                transformative <span>digital solutions.</span>
+                <span>easier to run.</span>
                 </h1>
 
                 <p>
-                CodeBell engineers high-performance web applications, robust business
-                systems, and cutting-edge mobile experiences. We deliver undeniable
-                technical excellence.
+                CodeBell designs and develops custom software, business systems,
+                automation, websites, and mobile products around real operational
+                problems and measurable outcomes.
                 </p>
 
                 <div className="cb-hero-actions">
-                <Link to="/services" className="cb-primary-btn">
-                    Get Started
+                <Link to="/services" className="cb-primary-btn" data-cta-id="home_hero_services">
+                    Explore Services
                 </Link>
-                <Link to="/contact" className="cb-secondary-btn">
-                    Contact Us
+                <Link to="/contact" className="cb-secondary-btn" data-cta-id="home_hero_contact" data-consultation="true">
+                    Discuss a Project
                 </Link>
+                </div>
+                <div className="cb-hero-engine" aria-hidden="true">
+                  <span><Code2 size={21} strokeWidth={1.7} /></span>
+                </div>
+                <div className="cb-hero-capabilities" aria-label="Core capabilities">
+                  <span>Web applications</span>
+                  <span>Business systems</span>
+                  <span>AI automation</span>
                 </div>
             </div>
 
-            <div className="cb-hero-visual">
-                <div className="cb-tech-orb-wrap">
-                <div className="cb-tech-glow"></div>
-
-                <div className="cb-tech-ring cb-tech-ring-1"></div>
-                <div className="cb-tech-ring cb-tech-ring-2"></div>
-                <div className="cb-tech-ring cb-tech-ring-3"></div>
-
-                <div className="cb-tech-core">
-                    <div className="cb-tech-core-inner"></div>
-                </div>
-
-                <span className="cb-tech-node cb-node-1"></span>
-                <span className="cb-tech-node cb-node-2"></span>
-                <span className="cb-tech-node cb-node-3"></span>
-                <span className="cb-tech-node cb-node-4"></span>
-                <span className="cb-tech-node cb-node-5"></span>
-                <span className="cb-tech-node cb-node-6"></span>
-
-                <div className="cb-tech-grid"></div>
-                </div>
-            </div>
             </div>
         </div>
         </section>
 
-        <section className="cb-clients-strip">
+        <MotionSection className="cb-clients-strip">
         <div className="cb-container">
             <div className="cb-clients-marquee">
             <div className="cb-clients-track">
@@ -166,7 +182,7 @@ export default function Home() {
                 <div className="cb-client-logo-card" key={index}>
                     <img
                     src={logo}
-                    alt={`Client logo ${index + 1}`}
+                    alt=""
                     className="cb-client-logo"
                     loading="lazy"
                     />
@@ -175,49 +191,79 @@ export default function Home() {
             </div>
             </div>
         </div>
-        </section>
+        </MotionSection>
 
-        <section className="cb-services-section">
+        <MotionSection className="cb-home-intro-section" aria-labelledby="home-intro-heading">
           <div className="cb-container">
-            <div className="cb-section-header">
-              <h2>Our Core Services</h2>
-              <p>Engineering precision across the digital spectrum.</p>
+            <div className="cb-home-intro-copy">
+              <span className="cb-layout-eyebrow">INTRODUCTION</span>
+              <h2 id="home-intro-heading">Digital systems built around the work.</h2>
+              <p>
+                CodeBell turns defined business problems into practical software,
+                connected systems, and digital experiences that teams can operate and improve.
+              </p>
             </div>
-
-            <div className="cb-services-grid">
-              {services.map((service, index) => (
-                <article
-                  key={index}
-                  className={`cb-service-card ${service.wide ? "wide" : ""}`}
-                >
-                  <div className="cb-service-icon">{service.icon}</div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                </article>
+            <MotionStagger className="cb-home-intro-grid">
+              {foundationPoints.map((point) => (
+                <MotionCard className="cb-home-intro-card" key={point.title}>
+                  <div className="cb-home-intro-icon">{point.icon}</div>
+                  <div>
+                    <h3>{point.title}</h3>
+                    <p>{point.text}</p>
+                  </div>
+                </MotionCard>
               ))}
-            </div>
+            </MotionStagger>
           </div>
-        </section>
+        </MotionSection>
 
-        <section className="cb-process-section">
+        <MotionSection className="cb-process-section">
           <div className="cb-container">
             <div className="cb-process-header">
-              <h2>The Monolith Process</h2>
+              <span className="cb-layout-eyebrow">CHOOSE · BUILD · LAUNCH · IMPROVE</span>
+              <h2>How it works</h2>
             </div>
 
-            <div className="cb-process-grid">
+            <MotionStagger className="cb-process-grid">
               {processSteps.map((step, index) => (
-                <div className="cb-process-item" key={index}>
+                <MotionCard as="div" className="cb-process-item" key={index}>
                   <span className="cb-process-number">{step.number}</span>
                   <h3>{step.title}</h3>
                   <p>{step.text}</p>
-                </div>
+                </MotionCard>
               ))}
+            </MotionStagger>
+          </div>
+        </MotionSection>
+
+        <MotionSection className="cb-services-section">
+          <div className="cb-container">
+            <div className="cb-section-header">
+              <div><span className="cb-layout-eyebrow">CAPABILITIES</span><h2>What we provide</h2></div>
+              <p>Choose the capability that best matches the problem you need to solve.</p>
+            </div>
+
+            <MotionStagger className="cb-services-grid">
+              {services.map((service, index) => (
+                <MotionCard
+                  key={index}
+                  className={`cb-service-card ${service.wide ? "wide" : ""}`}
+                  data-service={service.id}
+                >
+                  <span className="cb-card-index">{String(index + 1).padStart(2, "0")}</span>
+                  <div className="cb-service-icon">{service.icon}</div>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                </MotionCard>
+              ))}
+            </MotionStagger>
+            <div className="cb-home-services-action">
+              <Link to="/services">Explore all capabilities <span aria-hidden="true">→</span></Link>
             </div>
           </div>
-        </section>
+        </MotionSection>
 
-        <section className="cb-cta-section">
+        <MotionSection className="cb-cta-section">
           <div className="cb-container">
             <div className="cb-cta-box">
               <h2>
@@ -225,12 +271,12 @@ export default function Home() {
                 <br />
                 solution.
               </h2>
-              <Link to="/contact" className="cb-primary-btn">
+              <Link to="/contact" className="cb-primary-btn" data-cta-id="home_final_project" data-consultation="true">
                 Start a Project
               </Link>
             </div>
           </div>
-        </section>
+        </MotionSection>
       </main>
 
       <Footer />

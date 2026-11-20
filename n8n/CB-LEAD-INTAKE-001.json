@@ -1,0 +1,123 @@
+{
+  "name": "CB-LEAD-INTAKE-001",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cb-lead-intake-001",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Signed Lead Event",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-720, 120],
+      "webhookId": "CB-LEAD-INTAKE-001"
+    },
+    {
+      "parameters": {
+        "jsCode": "const crypto = require('crypto');\nconst input = $json.body ?? $json;\nconst headers = $json.headers ?? {};\nconst timestamp = String(headers['x-codebell-timestamp'] || headers['X-Codebell-Timestamp'] || '');\nconst signature = String(headers['x-codebell-signature'] || headers['X-Codebell-Signature'] || '');\nconst eventId = String(headers['x-codebell-event-id'] || input.event_id || '');\nconst secret = $env.CB_N8N_SIGNING_SECRET;\nif (!secret) throw new Error('CB_N8N_SIGNING_SECRET is not configured');\nif (!timestamp || Math.abs(Date.now() - Number(timestamp)) > 300000) throw new Error('Expired event');\nconst raw = JSON.stringify(input);\nconst expected = crypto.createHmac('sha256', secret).update(`${timestamp}.${raw}`).digest('hex');\nif (!signature || signature.length !== expected.length || !crypto.timingSafeEqual(Buffer.from(signature, 'hex'), Buffer.from(expected, 'hex'))) throw new Error('Invalid signature');\nif (input.event_type !== 'lead.created' || input.event_version !== 1 || !eventId || input.payload?.brand_id !== 'codebell_development') throw new Error('Invalid event schema');\nconst data = $getWorkflowStaticData('global');\ndata.processedEvents = data.processedEvents || {};\nconst duplicate = Boolean(data.processedEvents[eventId]);\nif (!duplicate) data.processedEvents[eventId] = new Date().toISOString();\nreturn [{ json: { ...input, duplicate } }];"
+      },
+      "id": "verify",
+      "name": "Verify Signature and Event",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-500, 120]
+    },
+    {
+      "parameters": {
+        "conditions": { "boolean": [{ "value1": "={{$json.duplicate}}", "value2": true }] }
+      },
+      "id": "duplicate-if",
+      "name": "Duplicate Event?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [-280, 120]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { accepted: true, duplicate: true, event_id: $json.event_id } }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "duplicate-response",
+      "name": "Acknowledge Duplicate",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [-40, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const payload = $json.payload;\nconst assigned = Boolean(payload.assigned_to);\nreturn [{ json: { ...$json, assignment: assigned ? 'assigned' : 'unassigned_queue', notification_configured: Boolean($env.CB_NOTIFICATION_WEBHOOK_URL), notification: { lead_reference: payload.lead_reference, service: payload.service, submission_time: $json.occurred_at, crm_url: `${$env.CB_CRM_BASE_URL || 'https://www.codebell.online'}${payload.crm_path}`, assigned_owner: payload.assigned_to || 'unassigned_queue' } } }];"
+      },
+      "id": "assignment",
+      "name": "Confirm Assignment or Queue",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-40, 220]
+    },
+    {
+      "parameters": {
+        "conditions": { "boolean": [{ "value1": "={{$json.notification_configured}}", "value2": true }] }
+      },
+      "id": "notification-if",
+      "name": "Notification Configured?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [180, 220]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.CB_NOTIFICATION_WEBHOOK_URL}}",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify($json.notification) }}",
+        "options": { "timeout": 10000 }
+      },
+      "id": "notify",
+      "name": "Send Internal Notification",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [420, 140]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { ...$json, notification_status: 'skipped_not_configured' } }];"
+      },
+      "id": "notification-skipped",
+      "name": "Record Notification Pending",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [420, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { accepted: true, duplicate: false, event_id: $('Confirm Assignment or Queue').item.json.event_id, assignment: $('Confirm Assignment or Queue').item.json.assignment, notification: $('Confirm Assignment or Queue').item.json.notification_configured ? 'sent' : 'pending_configuration' } }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "success-response",
+      "name": "Acknowledge Processing",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [680, 220]
+    }
+  ],
+  "connections": {
+    "Signed Lead Event": { "main": [[{ "node": "Verify Signature and Event", "type": "main", "index": 0 }]] },
+    "Verify Signature and Event": { "main": [[{ "node": "Duplicate Event?", "type": "main", "index": 0 }]] },
+    "Duplicate Event?": { "main": [[{ "node": "Acknowledge Duplicate", "type": "main", "index": 0 }], [{ "node": "Confirm Assignment or Queue", "type": "main", "index": 0 }]] },
+    "Confirm Assignment or Queue": { "main": [[{ "node": "Notification Configured?", "type": "main", "index": 0 }]] },
+    "Notification Configured?": { "main": [[{ "node": "Send Internal Notification", "type": "main", "index": 0 }], [{ "node": "Record Notification Pending", "type": "main", "index": 0 }]] },
+    "Send Internal Notification": { "main": [[{ "node": "Acknowledge Processing", "type": "main", "index": 0 }]] },
+    "Record Notification Pending": { "main": [[{ "node": "Acknowledge Processing", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1", "saveExecutionProgress": true, "saveManualExecutions": true },
+  "versionId": "cb-lead-intake-001-sprint-1",
+  "meta": { "templateCredsSetupCompleted": false },
+  "tags": []
+}

@@ -1,5 +1,17 @@
 {
+  "redirects": [
+    { "source": "/terms", "destination": "/terms-and-conditions", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/about", "destination": "/" },
+    { "source": "/services", "destination": "/" },
+    { "source": "/portfolio", "destination": "/" },
+    { "source": "/contact", "destination": "/" },
+    { "source": "/support", "destination": "/" },
+    { "source": "/faqs", "destination": "/" },
+    { "source": "/privacy-policy", "destination": "/" },
+    { "source": "/terms-and-conditions", "destination": "/" },
+    { "source": "/internal/crm", "destination": "/" },
+    { "source": "/internal/crm/:path*", "destination": "/" }
   ]
 }

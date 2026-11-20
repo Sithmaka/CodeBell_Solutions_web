@@ -1,4 +1,17 @@
 .vercel
+node_modules/
+functions/node_modules/
+.DS_Store
+**/.DS_Store
 .env*.local
 .env
 dist/
+functions/.env*
+functions/.secret.local
+functions/lib/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+firepit-log.txt
+*-firebase-adminsdk-*.json
+service-account*.json

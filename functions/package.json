@@ -1,0 +1,25 @@
+{
+  "name": "codebell-crm-functions",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "lint": "eslint src test",
+    "test": "node --test test/validation.test.js test/security.test.js",
+    "test:rules": "node --test test/firestore.rules.test.js",
+    "emulators:test": "firebase emulators:exec --only auth,firestore,functions 'npm test && npm run test:rules'",
+    "provision-user": "node scripts/provision-crm-user.js",
+    "configure-assignment": "node scripts/configure-assignment.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.5.0",
+    "firebase-functions": "^6.4.0"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^4.0.1",
+    "eslint": "^9.39.4"
+  }
+}

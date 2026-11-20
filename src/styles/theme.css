@@ -1,0 +1,194 @@
+:root {
+  color-scheme: dark;
+  --cb-bg: #050506;
+  --cb-bg-soft: #0a090c;
+  --cb-panel: #100f13;
+  --cb-border: rgba(255, 255, 255, 0.1);
+  --cb-border-purple: rgba(150, 103, 255, 0.34);
+  --cb-text: #f8f7fb;
+  --cb-muted: #aaa6b2;
+  --cb-purple: #6c35ff;
+  --cb-purple-bright: #9b74ff;
+  --cb-glow: 0 20px 70px rgba(92, 39, 255, 0.22);
+}
+
+html, body, #root { min-height: 100%; background: var(--cb-bg); }
+body { color: var(--cb-text); }
+::selection { color: #fff; background: rgba(108, 53, 255, 0.72); }
+
+.cb-theme {
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  color: var(--cb-text);
+  background: radial-gradient(circle at 78% 7%, rgba(108, 53, 255, 0.13), transparent 27rem), var(--cb-bg);
+  isolation: isolate;
+}
+
+.cb-theme::before {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.22;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, #000, transparent 72%);
+}
+
+.cb-theme :is(.cb-home,.cb-about-page,.cb-services-page,.cb-portfolio,.cb-contact-page,.cb-support-page,.cb-faq-page,.cb-legal-page) { color: var(--cb-text); background: var(--cb-bg); }
+.cb-theme :where(h1,h2,h3,h4) { color: var(--cb-text); }
+.cb-theme :where(p,li) { color: var(--cb-muted); }
+.cb-theme main :is(h1,h2,h3,h4,strong) { color: var(--cb-text); }
+.cb-theme main p { color: var(--cb-muted); }
+.cb-theme :where(a,button,input,select,textarea) { transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+.cb-theme :where(a,button,input,select,textarea):focus-visible { outline: 3px solid rgba(155,116,255,.55); outline-offset: 3px; }
+
+/* Navigation */
+.cb-theme .cb-navbar { color: var(--cb-text); background: rgba(5,5,6,.86); border-bottom: 1px solid var(--cb-border); box-shadow: 0 10px 45px rgba(0,0,0,.26); backdrop-filter: blur(20px) saturate(130%); }
+.cb-theme .cb-navbar-logo { padding: 8px 11px; background: rgba(255,255,255,.96); border: 1px solid rgba(255,255,255,.82); border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,.24); }
+.cb-theme .cb-navbar-logo img { height:42px; }
+.cb-theme .cb-nav-link { color: #c7c3cd; }
+.cb-theme .cb-nav-link:hover, .cb-theme .cb-nav-link.active { color: #fff; }
+.cb-theme .cb-nav-link::after { background: linear-gradient(90deg, var(--cb-purple), var(--cb-purple-bright)); }
+.cb-theme :is(.cb-quote-btn,.cb-mobile-quote-btn,.cb-primary-btn,.cb-services-primary-btn,.cb-contact-submit-btn,.cb-chat-submit-btn,.cb-chat-send-btn) { color: #fff; background: linear-gradient(135deg,#5620ee,#7a43ff 60%,#9a70ff); border-color: transparent; box-shadow: 0 12px 34px rgba(95,40,255,.32); }
+.cb-theme :is(.cb-quote-btn,.cb-mobile-quote-btn,.cb-primary-btn,.cb-services-primary-btn,.cb-contact-submit-btn,.cb-chat-submit-btn,.cb-chat-send-btn):hover { color:#fff; box-shadow:0 16px 45px rgba(110,53,255,.45); transform:translateY(-2px); }
+.cb-theme :is(.cb-menu-toggle,.cb-close-btn) { color:#fff; }
+.cb-theme .cb-menu-toggle span { background:#fff; }
+.cb-theme .cb-mobile-overlay { background:rgba(0,0,0,.76); backdrop-filter:blur(5px); }
+.cb-theme .cb-mobile-sidebar { color:var(--cb-text); background:#09080b; border-left:1px solid var(--cb-border); }
+.cb-theme .cb-mobile-link { color:#d0ccd5; border-bottom-color:var(--cb-border); }
+.cb-theme .cb-mobile-link.active, .cb-theme .cb-mobile-link:hover { color:var(--cb-purple-bright); }
+
+/* Hero atmosphere inspired by the supplied reference */
+.cb-theme :is(.cb-hero,.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero,.cb-faq-header,.cb-legal-hero) {
+  position:relative; overflow:hidden; color:var(--cb-text);
+  background:radial-gradient(ellipse at 50% 118%,rgba(112,61,255,.24),transparent 48%),radial-gradient(circle at 86% 18%,rgba(126,76,255,.13),transparent 25%),linear-gradient(180deg,#08070a,#050506);
+  border-bottom:1px solid var(--cb-border); isolation:isolate;
+}
+.cb-theme :is(.cb-hero,.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero,.cb-faq-header,.cb-legal-hero)::before {
+  position:absolute; z-index:-1; inset:0; pointer-events:none; content:""; opacity:.42;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:70px 70px; mask-image:radial-gradient(ellipse at 50% 35%,#000 8%,transparent 72%);
+}
+.cb-theme :is(.cb-hero,.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero,.cb-faq-header,.cb-legal-hero) h1 { color:#fff; text-shadow:0 10px 50px rgba(0,0,0,.5); }
+.cb-theme :is(.cb-hero,.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero,.cb-faq-header,.cb-legal-hero) p { color:#aaa6b2; }
+.cb-theme :is(.cb-portfolio-eyebrow,.cb-faq-eyebrow,.cb-legal-eyebrow,.cb-overview-label) { color:var(--cb-purple-bright); }
+.cb-theme :is(.cb-secondary-btn,.cb-services-secondary-btn) { color:#eeeaf4; background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.18); }
+.cb-theme :is(.cb-secondary-btn,.cb-services-secondary-btn):hover { color:#fff; background:rgba(112,60,255,.13); border-color:var(--cb-border-purple); }
+
+/* Shared glass cards */
+.cb-theme :is(.cb-service-card,.cb-process-item,.cb-about-stat-card,.cb-mv-card,.cb-principle-card,.cb-advantage-card,.cb-service-box,.cb-project-card,.cb-faq-item,.cb-contact-form-card,.cb-contact-next,.cb-hours-block,.cb-support-option,.cb-support-track-result,.cb-support-success,.cb-legal-summary,.cb-legal-notice,.cb-legal-contact) {
+  color:var(--cb-text); background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018)),var(--cb-panel); border-color:var(--cb-border); border-radius:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 22px 70px rgba(0,0,0,.22);
+}
+.cb-theme :is(.cb-service-card,.cb-process-item,.cb-about-stat-card,.cb-mv-card,.cb-principle-card,.cb-advantage-card,.cb-service-box,.cb-project-card,.cb-faq-item,.cb-contact-form-card,.cb-contact-next,.cb-hours-block,.cb-support-option,.cb-support-track-result,.cb-support-success,.cb-legal-summary,.cb-legal-notice,.cb-legal-contact) :is(h2,h3,h4,strong) { color:var(--cb-text); }
+.cb-theme :is(.cb-service-card,.cb-process-item,.cb-about-stat-card,.cb-mv-card,.cb-principle-card,.cb-advantage-card,.cb-service-box,.cb-project-card,.cb-support-option):hover {
+  background:linear-gradient(145deg,rgba(122,67,255,.11),rgba(255,255,255,.025)),var(--cb-panel); border-color:var(--cb-border-purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.07),var(--cb-glow); transform:translateY(-5px);
+}
+.cb-theme :is(.cb-service-card,.cb-process-item,.cb-about-stat-card,.cb-mv-card,.cb-principle-card,.cb-advantage-card,.cb-service-box,.cb-project-card,.cb-faq-item,.cb-contact-form-card,.cb-support-option,.cb-legal-summary) p { color:var(--cb-muted); }
+.cb-theme :is(.cb-service-icon,.cb-about-stat-icon,.cb-mv-icon,.cb-principle-icon,.cb-advantage-icon,.cb-service-box-icon,.cb-contact-info-icon) { color:#b196ff; background:linear-gradient(145deg,rgba(137,84,255,.2),rgba(255,255,255,.04)); border:1px solid rgba(155,116,255,.24); box-shadow:0 12px 38px rgba(78,24,203,.2); }
+
+/* Page sections */
+.cb-theme :is(.cb-services-section,.cb-process-section,.cb-clients-strip,.cb-about-stats-section,.cb-overview-section,.cb-principles-section,.cb-advantage-section,.cb-services-grid-section,.cb-portfolio-work,.cb-faq-section,.cb-contact-main-section,.cb-support-track-section,.cb-legal-content) { color:var(--cb-text); background:var(--cb-bg); }
+.cb-theme :is(.cb-process-section,.cb-overview-section,.cb-advantage-section,.cb-faq-section,.cb-contact-main-section) { background:linear-gradient(180deg,#08070a,#050506); }
+.cb-theme .cb-tech-glow { background:radial-gradient(circle,rgba(123,69,255,.34),transparent 66%); }
+.cb-theme .cb-tech-ring { border-color:rgba(155,116,255,.46); box-shadow:0 0 34px rgba(103,45,255,.14); }
+.cb-theme .cb-tech-core { background:radial-gradient(circle at 35% 30%,#c3adff,#7138ff 38%,#160736 72%); box-shadow:0 0 55px rgba(112,54,255,.62),0 0 120px rgba(112,54,255,.18); }
+.cb-theme .cb-tech-node { color:#fff; background:#100c19; border-color:rgba(164,127,255,.46); box-shadow:0 0 28px rgba(108,53,255,.36); }
+.cb-theme :is(.cb-process-number,.cb-project-number) { color:var(--cb-purple-bright); }
+.cb-theme .cb-client-logo-card { background:rgba(255,255,255,.94); border:1px solid rgba(255,255,255,.8); border-radius:14px; box-shadow:0 12px 38px rgba(0,0,0,.22); }
+.cb-theme :is(.cb-cta-section,.cb-services-cta-section,.cb-contact-banner-section) { background:#050506; }
+.cb-theme :is(.cb-cta-box,.cb-services-cta-box,.cb-contact-banner) { position:relative; overflow:hidden; background:radial-gradient(circle at 80% 20%,rgba(190,164,255,.24),transparent 31%),linear-gradient(135deg,#241052,#5421d6 60%,#7843ff); border:1px solid rgba(191,166,255,.34); box-shadow:0 30px 90px rgba(83,31,216,.34); }
+.cb-theme :is(.cb-cta-box,.cb-services-cta-box,.cb-contact-banner) :is(h2,p) { color:#fff; }
+
+/* About and services */
+.cb-theme .cb-about-tags span { color:#d7c8ff; background:rgba(117,63,255,.12); border-color:rgba(155,116,255,.28); }
+.cb-theme .cb-about-hero-right { border-color:var(--cb-border); }
+.cb-theme :is(.cb-case-link,.cb-service-learn-more) { color:#ad8fff; }
+.cb-theme .cb-service-feature-list li::before { color:var(--cb-purple-bright); }
+
+/* Portfolio: keep live URL iframes, change only their framing */
+.cb-theme :is(.cb-portfolio-section-heading,.cb-project-info) { color:var(--cb-text); }
+.cb-theme .cb-project-preview { background:#0b0a0d; border-color:var(--cb-border); box-shadow:0 28px 70px rgba(0,0,0,.38); }
+.cb-theme .cb-browser-bar { background:#18161c; border-bottom-color:var(--cb-border); }
+.cb-theme .cb-browser-address { color:#918c99; background:#0b0a0d; }
+.cb-theme .cb-project-viewport { background:#0a090c; }
+.cb-theme .cb-project-preview-overlay { background:linear-gradient(180deg,transparent 45%,rgba(9,4,17,.72)); }
+.cb-theme :is(.cb-project-link,.cb-portfolio-cta-link) { color:#fff; background:linear-gradient(135deg,#5821f0,#7d48ff); border-color:rgba(255,255,255,.12); box-shadow:0 12px 34px rgba(95,40,255,.26); }
+.cb-theme .cb-portfolio-cta { background:radial-gradient(circle at 75% 25%,rgba(127,72,255,.22),transparent 30%),#09080b; border-color:var(--cb-border); }
+
+/* FAQ */
+.cb-theme .cb-faq-question { color:var(--cb-text); }
+.cb-theme .cb-faq-question:hover { color:#b69cff; }
+.cb-theme .cb-faq-answer { color:var(--cb-muted); border-top-color:var(--cb-border); }
+
+/* Contact, support and forms */
+.cb-theme :is(.cb-contact-sidebar,.cb-contact-info-list,.cb-hours-list) { color:var(--cb-text); }
+.cb-theme :is(.cb-contact-info-item,.cb-hours-row,.cb-budget-row) { border-color:var(--cb-border); }
+.cb-theme :is(.cb-field-group,.cb-crm-login,.cb-crm-actions) label { color:#e9e6ed; }
+.cb-theme :is(.cb-field-group,.cb-support-track-form,.cb-crm-login,.cb-crm-actions) :is(input,select,textarea) { color:var(--cb-text); background:#0b0a0d; border:1px solid rgba(255,255,255,.14); border-radius:10px; caret-color:var(--cb-purple-bright); }
+.cb-theme :is(.cb-field-group,.cb-support-track-form,.cb-crm-login,.cb-crm-actions) :is(input,select,textarea)::placeholder { color:#706b78; }
+.cb-theme :is(.cb-field-group,.cb-support-track-form,.cb-crm-login,.cb-crm-actions) :is(input,select,textarea):focus { background:#0d0b11; border-color:rgba(149,103,255,.72); box-shadow:0 0 0 4px rgba(108,53,255,.13); }
+.cb-theme option { color:var(--cb-text); background:#111014; }
+.cb-theme input[type="checkbox"], .cb-theme input[type="radio"] { accent-color:var(--cb-purple); }
+.cb-theme :is(.cb-consent-row,.cb-field-help,.cb-support-note,.cb-support-ai-note) { color:var(--cb-muted); }
+.cb-theme :is(.cb-support-note,.cb-support-ai-note) { background:rgba(108,53,255,.11); border:1px solid rgba(155,116,255,.2); }
+.cb-theme :is(.cb-support-consent,.cb-support-steps p) { color:var(--cb-muted); }
+.cb-theme .cb-support-steps strong { color:var(--cb-text); }
+.cb-theme :is(.cb-consent-row a,.cb-contact-info-item a,.cb-support-link-btn) { color:#ad90ff; }
+.cb-theme :is(.cb-form-alert,.cb-support-alert) { color:#ffbbb2; background:rgba(135,36,23,.2); border-color:rgba(255,126,108,.28); }
+.cb-theme :is(.cb-lead-success,.cb-support-success) { color:#b9f6ce; background:rgba(25,104,55,.17); border-color:rgba(83,210,128,.25); }
+.cb-theme .cb-support-status-pill { color:#dacdff; background:rgba(111,57,255,.17); border-color:rgba(155,116,255,.28); }
+
+/* Legal */
+.cb-theme .cb-legal-layout { border-color:var(--cb-border); }
+.cb-theme .cb-legal-toc { background:#0b0a0d; border-color:var(--cb-border); }
+.cb-theme :is(.cb-legal-toc a,.cb-legal-content a) { color:#ad90ff; }
+.cb-theme :is(.cb-legal-next,.cb-legal-content section) { border-color:var(--cb-border); }
+
+/* Footer */
+.cb-theme .cb-footer { color:var(--cb-text); background:radial-gradient(circle at 20% 0%,rgba(103,48,238,.15),transparent 26rem),#030304; border-top:1px solid var(--cb-border); }
+.cb-theme .cb-footer-top-line { background:linear-gradient(90deg,transparent,var(--cb-purple),transparent); }
+.cb-theme .cb-footer :is(a,p) { color:#a7a2ae; }
+.cb-theme .cb-footer a:hover { color:#b49aff; }
+
+/* Chat and consent */
+.cb-theme .cb-chatbot-fab { background:linear-gradient(135deg,#5620ee,#8b57ff); box-shadow:0 16px 48px rgba(99,40,255,.48); }
+.cb-theme .cb-chatbot-window { color:var(--cb-text); background:#0b0a0d; border:1px solid var(--cb-border); box-shadow:0 28px 90px rgba(0,0,0,.58),0 0 55px rgba(85,30,221,.18); }
+.cb-theme .cb-chatbot-header { background:linear-gradient(135deg,#1c1038,#4d1ac2); border-bottom:1px solid rgba(255,255,255,.1); }
+.cb-theme :is(.cb-chatbot-body,.cb-chatbot-input) { background:#0b0a0d; }
+.cb-theme :is(.cb-chat-bot .cb-chat-bubble,.cb-chat-summary,.cb-chat-option-btn) { color:#ded9e4; background:#17141c; border-color:var(--cb-border); }
+.cb-theme .cb-chat-user .cb-chat-bubble { color:#fff; background:#5d27eb; }
+.cb-theme .cb-chatbot-input { border-top-color:var(--cb-border); }
+.cb-theme .cb-chatbot-input input { color:#fff; background:#121015; border-color:var(--cb-border); }
+.cb-theme .cb-consent-banner { color:#eeeaf3; background:rgba(11,9,14,.96); border:1px solid var(--cb-border); box-shadow:0 24px 70px rgba(0,0,0,.48); backdrop-filter:blur(18px); }
+.cb-theme .cb-consent-banner button.primary { color:#fff; background:var(--cb-purple); border-color:var(--cb-purple); }
+
+/* Internal CRM follows the palette; workflows are unchanged */
+.cb-theme :is(.cb-crm-login,.cb-crm-state,.cb-crm-shell) { color:var(--cb-text); background:var(--cb-bg); }
+.cb-theme :is(.cb-crm-login > section,.cb-crm-summary article,.cb-crm-panel) { color:var(--cb-text); background:var(--cb-panel); border-color:var(--cb-border); border-radius:14px; }
+.cb-theme .cb-crm-login img { padding:8px; background:#fff; border-radius:9px; }
+.cb-theme :is(.cb-crm-header a,.cb-crm-panel td a) { color:#ad90ff; }
+.cb-theme .cb-crm-panel :is(th,td), .cb-theme .cb-crm-details div { border-color:var(--cb-border); }
+.cb-theme .cb-crm-details pre { color:#ded9e4; background:#09080b; }
+.cb-theme :is(.cb-crm-login button,.cb-crm-header button,.cb-crm-panel button) { color:#fff; background:linear-gradient(135deg,#5720ee,#7a43ff); border-radius:8px; }
+
+/* 404 */
+.cb-theme .cb-not-found { color:var(--cb-text); background:radial-gradient(circle at 70% 20%,rgba(103,46,255,.24),transparent 30%),var(--cb-bg); }
+.cb-theme .cb-not-found span { color:var(--cb-muted); }
+.cb-theme .cb-not-found-actions a { color:#fff; background:linear-gradient(135deg,#5620ee,#7a43ff); border-color:transparent; }
+.cb-theme .cb-not-found-actions a:first-child { color:#e8e4ed; background:rgba(255,255,255,.04); border-color:var(--cb-border); }
+
+@media (max-width:768px) {
+  .cb-theme::before { background-size:42px 42px; }
+  .cb-theme :is(.cb-hero,.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero,.cb-faq-header,.cb-legal-hero)::before { background-size:48px 48px; }
+  .cb-theme .cb-navbar-logo { padding:6px 8px; }
+  .cb-theme .cb-chatbot-fab { right:12px; bottom:12px; width:50px; height:50px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .cb-theme :where(a,button,input,select,textarea) { transition:none; }
+  .cb-theme :is(.cb-service-card,.cb-process-item,.cb-about-stat-card,.cb-mv-card,.cb-principle-card,.cb-advantage-card,.cb-service-box,.cb-project-card,.cb-support-option):hover { transform:none; }
+}

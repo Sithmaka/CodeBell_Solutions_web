@@ -1,0 +1,18 @@
+{
+  "event_id": "evt_test_0001",
+  "event_type": "lead.created",
+  "event_version": 1,
+  "occurred_at": "2026-10-10T10:00:00.000Z",
+  "source": "codebell.online",
+  "correlation_id": "evt_test_0001",
+  "actor": { "type": "website_visitor" },
+  "payload": {
+    "brand_id": "codebell_development",
+    "lead_id": "testLeadDocumentId",
+    "lead_reference": "CB-2026-000001",
+    "service": "custom_software",
+    "assigned_to": null,
+    "assignment_state": "unassigned",
+    "crm_path": "/internal/crm/leads/testLeadDocumentId"
+  }
+}
