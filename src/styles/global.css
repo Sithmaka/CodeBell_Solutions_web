@@ -39,6 +39,22 @@ img {
   display: block;
 }
 
+.cb-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+}
+
+.cb-brand-logo img {
+  width: 100%;
+  height: auto;
+  /* Frame the wordmark inside the original PNG's transparent margins. */
+  aspect-ratio: 4 / 1;
+  object-fit: cover;
+  object-position: center 29%;
+}
+
 main {
   min-height: 70vh;
 }

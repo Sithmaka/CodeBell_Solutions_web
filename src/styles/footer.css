@@ -31,19 +31,14 @@
   align-items: start;
 }
 
-.cb-footer-brand h3,
+.cb-footer-logo {
+  width: 10.5rem;
+  margin-block-end: 10px;
+  margin-inline-start: -0.75rem;
+}
+
 .cb-footer-column h4 {
   margin: 0 0 16px;
-  color: #f5f7fb;
-}
-
-.cb-footer-brand h3 {
-  font-size: 1.18rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-}
-
-.cb-footer-column h4 {
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -131,7 +126,6 @@
     gap: 28px;
   }
 
-  .cb-footer-brand h3,
   .cb-footer-column h4 {
     margin-bottom: 12px;
   }

@@ -47,8 +47,6 @@ body { color: var(--cb-text); }
 
 /* Navigation */
 .cb-theme .cb-navbar { color: var(--cb-text); background: rgba(5,5,6,.86); border-bottom: 1px solid var(--cb-border); box-shadow: 0 10px 45px rgba(0,0,0,.26); backdrop-filter: blur(20px) saturate(130%); }
-.cb-theme .cb-navbar-logo { padding: 8px 11px; background: rgba(255,255,255,.96); border: 1px solid rgba(255,255,255,.82); border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,.24); }
-.cb-theme .cb-navbar-logo img { height:42px; }
 .cb-theme .cb-nav-link { color: #c7c3cd; }
 .cb-theme .cb-nav-link:hover, .cb-theme .cb-nav-link.active { color: #fff; }
 .cb-theme .cb-nav-link::after { background: linear-gradient(90deg, var(--cb-purple), var(--cb-purple-bright)); }
@@ -184,7 +182,6 @@ body { color: var(--cb-text); }
 @media (max-width:768px) {
   .cb-theme::before { background-size:42px 42px; }
   .cb-theme :is(.cb-hero,.cb-about-hero,.cb-services-hero,.cb-portfolio-hero,.cb-contact-hero,.cb-faq-header,.cb-legal-hero)::before { background-size:48px 48px; }
-  .cb-theme .cb-navbar-logo { padding:6px 8px; }
   .cb-theme .cb-chatbot-fab { right:12px; bottom:12px; width:50px; height:50px; }
 }
 

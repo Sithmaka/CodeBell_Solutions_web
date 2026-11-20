@@ -21,8 +21,6 @@
 /* Compact, quiet top navigation. */
 .cb-theme .cb-navbar { background:rgba(2,2,3,.86); box-shadow:none; }
 .cb-theme .cb-navbar-container { width:min(1080px,calc(100% - 44px)); min-height:70px; }
-.cb-theme .cb-navbar-logo { padding:6px 9px; border-radius:9px; box-shadow:none; }
-.cb-theme .cb-navbar-logo img { height:34px; }
 .cb-theme .cb-navbar-links { gap:34px; }
 .cb-theme .cb-nav-link { color:#97979d; font-size:.92rem; }
 .cb-theme .cb-nav-link.active { color:#f5f5f5; }
@@ -194,7 +192,6 @@
 @media (max-width:768px) {
   .cb-theme :is(.cb-container,.cb-about-container,.cb-services-container,.cb-portfolio-container,.cb-contact-container,.cb-faq-container,.cb-legal-shell,.cb-footer-container) { width:min(100% - 26px,1080px); }
   .cb-theme .cb-navbar-container { width:min(100% - 24px,1080px); }
-  .cb-theme .cb-navbar-logo img { height:30px; }
   .cb-theme .cb-hero { min-height:680px; padding-top:30px; }
   .cb-theme .cb-hero-layout { min-height:620px; padding:34px 0 76px; }
   .cb-theme .cb-hero h1 { font-size:clamp(2.7rem,13vw,4rem); }

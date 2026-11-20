@@ -99,19 +99,6 @@
   backdrop-filter:blur(22px) saturate(135%);
 }
 
-.cb-theme .cb-navbar-logo {
-  display:grid;
-  width:44px;
-  height:42px;
-  padding:7px;
-  place-items:center;
-  background:#f7f7f8;
-  border:1px solid rgba(255,255,255,.86);
-  border-radius:12px;
-  box-shadow:0 8px 24px rgba(0,0,0,.24);
-}
-
-.cb-theme .cb-navbar-logo img { width:100%; height:auto; max-height:27px; }
 .cb-theme .cb-navbar-links { gap:7px; margin-inline:auto; padding:4px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.055); border-radius:12px; }
 .cb-theme .cb-nav-link { padding:8px 13px; color:#918d99; border-radius:9px; font-size:.78rem; font-weight:700; }
 .cb-theme .cb-nav-link:hover { color:#fff; background:rgba(255,255,255,.045); }
@@ -136,7 +123,6 @@
   .cb-theme .cb-navbar-container { width:min(100% - 20px,1120px); min-height:56px; padding:6px 7px 6px 9px; border-radius:16px; }
   .cb-theme .cb-menu-toggle { width:42px; height:42px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:11px; }
   .cb-theme .cb-menu-toggle span { width:20px; height:1.5px; }
-  .cb-theme .cb-mobile-sidebar .cb-navbar-logo { width:44px; height:42px; padding:7px; }
   .cb-theme .cb-mobile-sidebar { background:rgba(8,7,10,.97); border-left:1px solid rgba(255,255,255,.1); box-shadow:-28px 0 80px rgba(0,0,0,.52); backdrop-filter:blur(24px); }
   .cb-theme .cb-mobile-link { padding:14px 4px; color:#aaa5b2; border-bottom-color:rgba(255,255,255,.08); }
   .cb-theme .cb-mobile-link.active { color:#fff; }

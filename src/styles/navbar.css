@@ -18,12 +18,9 @@
 }
 
 .cb-navbar-logo {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  letter-spacing: -0.5px;
-  line-height: 1;
   flex-shrink: 0;
+  width: 10rem;
+  margin-inline-start: -0.625rem;
 }
 
 .cb-navbar-links {
@@ -226,10 +223,6 @@
   .cb-navbar-container {
     min-height: 74px;
   }
-
-  .cb-navbar-logo {
-    font-size: 1.8rem;
-  }
 }
 
 @media (max-width: 576px) {
@@ -239,21 +232,11 @@
   }
 
   .cb-navbar-logo {
-    font-size: 1.6rem;
+    width: 9rem;
   }
 
   .cb-mobile-sidebar {
     width: min(300px, 88vw);
     padding: 20px 18px 24px;
   }
-}
-
-.cb-navbar-logo img {
-  height: 58px;
-  width: auto;
-  object-fit: contain;
-}
-
-.cb-mobile-sidebar .cb-navbar-logo img {
-  height: 32px;
 }

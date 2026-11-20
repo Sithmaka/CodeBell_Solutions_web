@@ -11,7 +11,9 @@ export default function Footer() {
 
         <div className="cb-footer-grid">
           <div className="cb-footer-brand">
-            <h3>CodeBell</h3>
+            <Link to="/" className="cb-brand-logo cb-footer-logo">
+              <img src="/codebell-dark.png" alt="CodeBell home" width="1248" height="505" />
+            </Link>
             <p>
               © {year} CodeBell. Software, business systems, automation, and
               digital products built around practical business needs.

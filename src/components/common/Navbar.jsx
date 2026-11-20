@@ -55,9 +55,9 @@ export default function Navbar() {
     <>
       <header className="cb-navbar">
         <div className="cb-navbar-container">
-            <Link to="/" className="cb-navbar-logo" onClick={closeMenu}>
-                <img src="/codebell.png" alt="CodeBell Logo" />
-            </Link>
+          <Link to="/" className="cb-brand-logo cb-navbar-logo" onClick={closeMenu}>
+            <img src="/codebell-dark.png" alt="CodeBell home" width="1248" height="505" />
+          </Link>
 
           <nav className="cb-navbar-links">
             <NavLink
@@ -155,9 +155,9 @@ export default function Navbar() {
         inert={!menuOpen}
       >
         <div className="cb-mobile-sidebar-top">
-            <Link to="/" className="cb-navbar-logo" onClick={closeMenu}>
-                <img src="/codebell.png" alt="CodeBell Logo" />
-            </Link>
+          <Link to="/" className="cb-brand-logo cb-navbar-logo" onClick={closeMenu}>
+            <img src="/codebell-dark.png" alt="CodeBell home" width="1248" height="505" />
+          </Link>
 
           <button
             ref={closeButtonRef}
